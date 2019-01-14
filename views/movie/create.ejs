@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+  </head>
+ 
+ <style>
+     body{
+         background-color:burlywood;
+     }
+.main-header{
+    text-align: center;
+    color: rgb(128, 0, 0);
+    font-size: 36px;
+    text-transform: uppercase;
+    font-style: bold;
+    
+}
+.row{
+    margin-top: 50px;
+}
+.btn{
+    background: rgb(128, 0, 0);
+    color: white;
+    padding: 15px;
+    margin-left: 35%;
+    
+    width: 30%;   
+   
+    
+    
+}
+.btnanh{
+    background: rgb(128, 0, 0);
+    color: white;
+    padding: 15px;
+    margin-left: 35%;
+    margin-top:10px;
+}
+.form-group{
+    color: rgb(128, 0, 0);
+   
+}
+.img-fluid{
+    margin-top:6% ;
+}
+ </style>
+  <body>
+      
+    
+    <div class="container-fluid">
+        <div class="main-header">
+           <h1><b>Tạo phim mới</b></h1>
+        </div>
+      
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <from>
+                <div class="form-group">
+                    
+                    <img src="https://cinema-web-training.herokuapp.com/images/image.jpeg" class="img-fluid" alt="Responsive image"   >
+                   
+                </from>
+                <button type="button" class="btnanh btn ">Tải ảnh lên</button> 
+                </div>
+               
+            </div>
+            <div class="col-md-4">
+                    <form>
+                            <div class="form-group">
+                              <label for="exampleInputName"><b>Tên phim</b></label>
+                              <input type="text" class="form-control" id="exampleInputname" placeholder="Nhập tên phim">
+                            </div>
+                    
+                        
+                              <div class="form-group">
+                                    <label  for="exampleFormControlSelect1" ><b>Thể loại phim</b></label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                      <option>Hành Động</option>
+                                      <option>Tình Cảm</option>
+                                      <option>Hài</option>
+                                      <option>Kinh Dị</option>
+                                      <option>Hoạt Hình</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group date">
+                                        <label for="exampleInputdate"><b>Thời gian phát hành</b></label>
+                                        <p><input type="text" id="datepicker" class="form-control"></p>
+                                        </div>
+                                  
+                            
+                                  <form class="form-group">
+                                        <div class="form-group">
+                                                <label for="exampleFormControlTextarea1"><b>Mô tả</b></label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3 "></textarea>
+                                              </div>
+                                        <button type="button" class="btn ">Tải lên</button>
+                                       
+                          </form>
+                          
+            </div>
+            <div class="col-md-2"></div>
+            
+        </div>
+        
+
+    </div>
+  </body>
+</html>
