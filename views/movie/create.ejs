@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<html ng-app="movie">
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <script src="stylesheet" href="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Datepicker - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
-  </head>
- 
- <style>
-     body{
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Datepicker - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+            $( "#datepicker" ).datepicker("setDate", new Date());
+        });
+    </script>
+</head>
+
+<style>
+    body{
          background-color:burlywood;
      }
 .main-header{
@@ -59,66 +66,70 @@
     margin-top:6% ;
 }
  </style>
-  <body>
-      
-    
+
+<body ng-controller="createController">
+
+
     <div class="container-fluid">
         <div class="main-header">
-           <h1><b>Tạo phim mới</b></h1>
+            <h1><b>Tạo phim mới</b></h1>
         </div>
-      
+
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-4">
                 <from>
-                <div class="form-group">
-                    
-                    <img src="https://cinema-web-training.herokuapp.com/images/image.jpeg" class="img-fluid" alt="Responsive image"   >
-                   
+                    <div class="form-group">
+
+                        <img src="https://cinema-web-training.herokuapp.com/images/image.jpeg" class="img-fluid" alt="Responsive image">
+
                 </from>
-                <button type="button" class="btnanh btn ">Tải ảnh lên</button> 
-                </div>
-               
+                <button type="button" class="btnanh btn ">Tải ảnh lên</button>
             </div>
-            <div class="col-md-4">
-                    <form>
-                            <div class="form-group">
-                              <label for="exampleInputName"><b>Tên phim</b></label>
-                              <input type="text" class="form-control" id="exampleInputname" placeholder="Nhập tên phim">
-                            </div>
-                    
-                        
-                              <div class="form-group">
-                                    <label  for="exampleFormControlSelect1" ><b>Thể loại phim</b></label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                      <option>Hành Động</option>
-                                      <option>Tình Cảm</option>
-                                      <option>Hài</option>
-                                      <option>Kinh Dị</option>
-                                      <option>Hoạt Hình</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group date">
-                                        <label for="exampleInputdate"><b>Thời gian phát hành</b></label>
-                                        <p><input type="text" id="datepicker" class="form-control"></p>
-                                        </div>
-                                  
-                            
-                                  <form class="form-group">
-                                        <div class="form-group">
-                                                <label for="exampleFormControlTextarea1"><b>Mô tả</b></label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3 "></textarea>
-                                              </div>
-                                        <button type="button" class="btn ">Tải lên</button>
-                                       
-                          </form>
-                          
-            </div>
-            <div class="col-md-2"></div>
-            
+
         </div>
-        
+        <div class="col-md-4">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputName"><b>Tên phim</b></label>
+                    <input type="text" class="form-control" id="exampleInputname" placeholder="Nhập tên phim" ng-model="tenPhim">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1"><b>Thể loại phim</b></label>
+                    <select class="form-control" id="exampleFormControlSelect1" ng-model="theloai" ng-options="option.name as option.value for option in thename" >
+                        <!-- <option>Hành Động</option>
+                        <option>Tình Cảm</option>
+                        <option>Hài</option>
+                        <option>Kinh Dị</option>
+                        <option>Hoạt Hình</option> -->
+                    </select>
+                </div>
+                <div class="form-group date">
+                    <label for="exampleInputdate"><b>Thời gian phát hành</b></label>
+                    <p><input type="text" id="datepicker" class="form-control" ng-model="phatHanh"></p>
+                </div>
+
+
+                <form class="form-group">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1"><b>Mô tả</b></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3 " ng-model="moTa" placeholder="Tóm tắt nội dung, diễn viên,..."></textarea>
+                    </div>
+                    <button ng-click="taoPhim()" class="btn ">Tải lên</button>
+
+                </form>
+
+        </div>
+        <div class="col-md-2"></div>
 
     </div>
-  </body>
+
+
+    </div>
+</body>
+<script src="/javascripts/movie/create.js"></script>
+
+
 </html>

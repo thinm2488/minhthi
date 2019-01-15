@@ -1,11 +1,70 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html  ng-app="movie" ng-controller="getController">
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <script src="stylesheet" href="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<style>
+  .main-header {
+    color: rgb(128, 0, 0);
+
+    text-transform: uppercase;
+    font-size: 50px;
+    margin-left: 20px;
+    font-family: 'Righteous', cursive;
+
+
+  }
+
+  .border {
+    background: rgb(128, 0, 0);
+    border-color: rgb(128, 0, 0);
+    border-width: 20px;
+
+
+  }
+
+  .row {
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+</style>
+
+<body >
+  <div class="container-fluid">
+    <div class="main-header">
+      <h1><b>Cinema Website</b></h1>
+
+    </div>
+    <span class="border"></span>
+    <div class="row">
+      <div class="col-md-3">
+        <img src="https://cinema-web-training.herokuapp.com/images/image.jpeg" class="img-fluid" alt="Responsive image">
+        <div><label for="exampleInputName"><b>Tên phim: </b></label></div>
+        <div><label for="exampleInputName"><b>Thể loại: </b></label></div>
+        <div><label for="exampleInputName"><b>Khởi chiếu: </b></label></div>
+
+      </div>
+
+    </div>
+  </div>
+</body>
+<script src="/javascripts/index.js"></script>
+
 </html>
