@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  ng-app="movie" ng-controller="getController">
+<html ng-app="movie" ng-controller="getController">
 
 <head>
   <title>
@@ -20,50 +20,58 @@
 
 </head>
 <style>
-  .main-header {
-    color: rgb(128, 0, 0);
-
-    text-transform: uppercase;
-    font-size: 50px;
-    margin-left: 20px;
-    font-family: 'Righteous', cursive;
-
-
+  body {
+    background-color: burlywood;
   }
 
-  .border {
-    background: rgb(128, 0, 0);
+  .main-header {}
+
+  .col-md-3 {
+    margin-top: 120px;
+    font-size: 25px;
+    border-style: solid;
     border-color: rgb(128, 0, 0);
-    border-width: 20px;
-
+   
+    margin-left:5%;
 
   }
 
-  .row {
-    margin-top: 80px;
-    margin-left: 20px;
-    margin-right: 20px;
+  .tieude {
+    font-size: 80px;
+    color: rgb(128, 0, 0);
+    font-family: 'Righteous', cursive;
+    text-align: center;
+
+  }
+  .img-fluid{
+    padding-top: 3%
+    
+    
   }
 </style>
 
-<body >
+<body>
+
+  <% include header.ejs %>
+  <div class="tieude">Danh Sách Phim Mới</div>
   <div class="container-fluid">
-    <div class="main-header">
-      <h1><b>Cinema Website</b></h1>
 
-    </div>
-    <span class="border"></span>
     <div class="row">
-      <div class="col-md-3">
-        <img src="https://cinema-web-training.herokuapp.com/images/image.jpeg" class="img-fluid" alt="Responsive image">
-        <div><label for="exampleInputName"><b>Tên phim: </b></label></div>
-        <div><label for="exampleInputName"><b>Thể loại: </b></label></div>
-        <div><label for="exampleInputName"><b>Khởi chiếu: </b></label></div>
 
+      <div ng-repeat="phim in listphim" class="col-md-3">
+        
+        <a href="/{{phim._id}}" style="color:black;text-decoration:null">
+          <img src="images/img.jpg" class="img-fluid" 
+            style="height: 450px; width:550px;object-fit: cover;">
+          <div><label style="margin-top:20px ;color:rgb(128, 0, 0)" for="exampleInputName"><b>Tên phim: {{phim.tenPhim}}</b></label></div>
+          <div><label style="color:rgb(128, 0, 0)" for="exampleInputName"><b>Thể loại: {{phim.theLoai}}</b></label></div>
+          <span ng-non-bindable></span><b style="color:rgb(128, 0, 0)" >Khởi Chiếu: <span>{{phim.phatHanh | date:'MM/dd/yyyy'}}</b></span><br>
+        </a>
       </div>
 
     </div>
   </div>
+  <% include footer.ejs %>
 </body>
 <script src="/javascripts/index.js"></script>
 

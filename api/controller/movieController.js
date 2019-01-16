@@ -11,17 +11,25 @@ const taoPhim = async function (data) {
     };
 
 }
-
 const layPhim= async function()
-{
+{//find()= select*
     var listphim = await Phim.find();
     return{
         listphim:listphim
     }
 }
+const layChiTietPhim= async function(id)
+{
+    let phim= await Phim.findOne({_id: id});
+    return{
+        phim:phim
+    }
+}
+
 
 module.exports = {
     taoPhim: taoPhim,
-    layPhim:layPhim
+    layPhim:layPhim,
+    layChiTietPhim:layChiTietPhim
 }
 

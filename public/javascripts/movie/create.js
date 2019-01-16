@@ -19,7 +19,7 @@ app.controller('createController', function ($scope, $http) {
             console.log(res)
         })
     }
-
+    //option
     $scope.thename = [
         {name:'Hành Động',value:'Hành Động'},
         {name:'Tình Cảm',value:'Tình Cảm'},

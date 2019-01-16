@@ -9,7 +9,7 @@ router.post('/', async function (req, res) {
     })
 
 });
-
+// tao listphim hung data về tu database
 router.get('/',async function(req,res){
         var listphim= await movieController.layPhim();
         res.send({
@@ -17,5 +17,11 @@ router.get('/',async function(req,res){
         })
    
    
+})
+router.post('/detail',async function(req,res){
+    var phim = await movieController.layChiTietPhim(req.body.id);
+    res.send({
+        phim:phim
+    })
 })
 module.exports = router;

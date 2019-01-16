@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="movie">
+<html ng-app="movie" ng-controller="detailController">
 
 <head>
     <title>
-        <%= title %>
+      
     </title>
     <script src="stylesheet" href="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
@@ -20,13 +20,13 @@
     <script>
         $(function () {
             $("#datepicker").datepicker();
-            $( "#datepicker" ).datepicker("setDate", new Date());
+            $("#datepicker").datepicker("setDate", new Date());
         });
     </script>
 </head>
 
 <style>
-    
+
     body{
          background-color:burlywood;
      }
@@ -36,6 +36,7 @@
     font-size: 36px;
     text-transform: uppercase;
     font-style: bold;
+    margin-top:20px;
     
 }
 .row{
@@ -53,27 +54,37 @@
     
 }
 .btnanh{
-    background: rgb(128, 0, 0);
-    color: white;
+    
+    
     padding: 15px;
     margin-left: 35%;
-    margin-top:10px;
+    margin-top:20px;
+    font-size: 20px;
+    
 }
 .form-group{
     color: rgb(128, 0, 0);
+    font-size: 30px;
+    
    
 }
 .img-fluid{
     margin-top:6% ;
 }
+footer{
+    position: absolute;
+    width: 96%;
+    bottom:0;
+    margin-left: 0;
+}
  </style>
 
-<body ng-controller="createController">
-
-
+<body >
+    <% include ../header.ejs %>
+    <p id="id" ng-show="false"><%= id %></p>
     <div class="container-fluid">
         <div class="main-header">
-            <h1><b>Tạo phim mới</b></h1>
+            <h1><b>Thông tin bộ phim</b></h1>
         </div>
 
         <div class="row">
@@ -81,47 +92,30 @@
             <div class="col-md-4">
                 <from>
                     <div class="form-group">
-
                         <img src="https://cinema-web-training.herokuapp.com/images/image.jpeg" class="img-fluid" alt="Responsive image">
-
                 </from>
-                <button type="button" class="btnanh btn ">Tải ảnh lên</button>
+                <button style=" border: solid; color: rgb(128, 0, 0);height:60px;width: 150px"type="button" class="btnanh btn ">Tải ảnh lên</button>
             </div>
-
         </div>
         <div class="col-md-4">
             <form>
                 <div class="form-group">
-                    <label for="exampleInputName"><b>Tên phim</b></label>
-                    <input type="text" class="form-control" id="exampleInputname" placeholder="Nhập tên phim" ng-model="tenPhim">
+                    <label  for="exampleInputName"><b>Tên phim: </b>{{thongtinphim.tenPhim}} </label>
                 </div>
-
-
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"><b>Thể loại phim</b></label>
-                    <select class="form-control" id="exampleFormControlSelect1" ng-model="theloai" ng-options="option.name as option.value for option in thename" >
-                        <!-- <option>Hành Động</option>
-                        <option>Tình Cảm</option>
-                        <option>Hài</option>
-                        <option>Kinh Dị</option>
-                        <option>Hoạt Hình</option> -->
-                    </select>
+                    <label for="exampleFormControlSelect1"><b>Thể loại phim:</b> {{thongtinphim.theLoai}} </label>
                 </div>
                 <div class="form-group date">
-                    <label for="exampleInputdate"><b>Thời gian phát hành</b></label>
-                    <p><input type="text" id="datepicker" class="form-control" ng-model="phatHanh"></p>
+                        <span ng-non-bindable></span><b style="color:rgb(128, 0, 0);margin-top:50px" >Khởi Chiếu: </b><span>{{thongtinphim.phatHanh | date:'MM/dd/yyyy'}}</span><br>
                 </div>
-
 
                 <form class="form-group">
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1"><b>Mô tả</b></label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3 " ng-model="moTa" placeholder="Tóm tắt nội dung, diễn viên,..."></textarea>
+                        <label  for="exampleFormControlTextarea1"><b>Mô tả: </b>{{thongtinphim.moTa}} </label>
                     </div>
-                    <button ng-click="taoPhim()" class="btn ">Tải lên</button>
-
+                    <button style=" border: solid; color: rgb(128, 0, 0);height:60px;width: 150px"type="button" class="btnanh btn ">Trở về</button>
+                    
                 </form>
-
         </div>
         <div class="col-md-2"></div>
 
@@ -129,8 +123,14 @@
 
 
     </div>
+
+    <footer>
+        <% include ../footer.ejs %>
+    </footer>
+
+
 </body>
-<script src="/javascripts/movie/create.js"></script>
+<script src="/javascripts/movie/detail.js"></script>
 
 
 </html>
