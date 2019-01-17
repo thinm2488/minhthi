@@ -5,8 +5,7 @@
   <title>
     <%= title %>
   </title>
-  <script src="stylesheet" href="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
     crossorigin="anonymous">
   <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -15,8 +14,7 @@
   <title>jQuery UI Datepicker - Default functionality</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 
 
 </head>
 <style>
@@ -27,17 +25,17 @@
   .main-header {}
 
   .col-md-3 {
-    margin-top: 120px;
-    font-size: 25px;
+    margin-top: 30px;
+    font-size: 20px;
     border-style: solid;
     border-color: rgb(128, 0, 0);
-   
+    padding: 20px;
     margin-left:5%;
 
   }
 
   .tieude {
-    font-size: 80px;
+    font-size: 50px;
     color: rgb(128, 0, 0);
     font-family: 'Righteous', cursive;
     text-align: center;
@@ -48,22 +46,28 @@
     
     
   }
+footer{
+    position: absolute;
+  
+    margin-left: 0;
+    width: 100%;
+}
 </style>
 
 <body>
 
   <% include header.ejs %>
-  <div class="tieude">Danh Sách Phim Mới</div>
+  <div class="tieude"><b>Danh Sách Phim Mới</b></div>
   <div class="container-fluid">
 
     <div class="row">
 
       <div ng-repeat="phim in listphim" class="col-md-3">
         
-        <a href="/{{phim._id}}" style="color:black;text-decoration:null">
+        <a href="/{{phim._id}}" style="color: rgb(128, 0, 0);text-decoration:null">
           <img src="images/img.jpg" class="img-fluid" 
-            style="height: 450px; width:550px;object-fit: cover;">
-          <div><label style="margin-top:20px ;color:rgb(128, 0, 0)" for="exampleInputName"><b>Tên phim: {{phim.tenPhim}}</b></label></div>
+            style="height: 350px; width:450px;object-fit: cover;">
+          <div><label style="margin-top:20px ;color:rgb(128, 0, 0)" for="exampleInputName"><b style="font-size: 30px"> {{phim.tenPhim}}</b></label></div>
           <div><label style="color:rgb(128, 0, 0)" for="exampleInputName"><b>Thể loại: {{phim.theLoai}}</b></label></div>
           <span ng-non-bindable></span><b style="color:rgb(128, 0, 0)" >Khởi Chiếu: <span>{{phim.phatHanh | date:'MM/dd/yyyy'}}</b></span><br>
         </a>
@@ -71,8 +75,15 @@
 
     </div>
   </div>
-  <% include footer.ejs %>
+  <footer>
+    <% include footer.ejs %>
+ </footer>
+  
 </body>
+<script src="stylesheet" href="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/javascripts/index.js"></script>
 
 </html>

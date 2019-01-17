@@ -16,10 +16,12 @@ app.controller('createController', function ($scope, $http) {
         $http.post('/api/movie', data).then(function (res) {
             //gui note thong bao
             window.alert('Tạo phim thành công');
+            window.location.href="/"
             console.log(res)
         })
     }
     //option
+    $scope.movieType = ['Hanh dong', 'Tinh cam']
     $scope.thename = [
         {name:'Hành Động',value:'Hành Động'},
         {name:'Tình Cảm',value:'Tình Cảm'},
