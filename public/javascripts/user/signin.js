@@ -1,25 +1,20 @@
 var app= angular.module('movie',[]);
 
-app.controller('userController',function($scope,$http){
-
-    $scope.taoUser = function(){
+app.controller('loginController',function($scope,$http){
+    $scope.checkLogin=false;
+    $scope.dangNhap = function(){
         var data={
-            tenNguoiDung:$scope.tenNguoiDung,
+            
             Email:$scope.Email,
-            passWord:$scope.passWord,
-            passWordConfim:$scope.passWordConfim
+            password:$scope.passWord
+            
 
         }
-        $http.post(window.location.origin+'/api/user',data).then(function(res){
-            window.alert('Tạo phim thành công');
+        $http.post(window.location.origin+'/api/user/login',data).then(function(res){
+            window.alert('Đăng nhập thành công');
             window.location.href="/"
             console.log(res)
         })
     }
+
 });
-
-
-
-       
-        
-      

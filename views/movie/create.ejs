@@ -5,6 +5,7 @@
     <title>
         <%= title %>
     </title>
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
@@ -53,15 +54,11 @@
 footer{
     position: absolute;
     width: 100%;
-    
+    bottom:0;
     margin-left: 0;
 }
 .form-control{
     height: 60px;
-}footer{
-    position: absolute;
-    bottom:0;
-    margin-left: 0;
 }
  </style>
 
@@ -79,10 +76,11 @@ footer{
                 <from>
                     <div class="form-group">
 
-                        <img style=" margin-left: 120px;height: 460px;width: 750p;object-fit: cover"src="../images/img.jpg" class="img-fluid" alt="Responsive image">
+                        <img id="img" style=" margin-left: 120px;height: 460px;width: 750p;object-fit: cover"src="../images/img.jpg" class="img-fluid" alt="Responsive image">
 
                 </from>
-                <button style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 50%;margin-top:30px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
+                <input ng-show="false" type='file' onchange="readURL(this);"  id="fileInput"/>
+                <button ng-click="chooseImage()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 50%;margin-top:30px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
             </div>
 
         </div>
@@ -96,7 +94,7 @@ footer{
 
                 <div class="form-group">
                     <label style="font-size:20px;font-family: 'Righteous', cursive;" for="exampleFormControlSelect1"><b>Thể loại phim</b></label>
-                    <select style="height: 50px;font-size: 20px" class="form-control" id="exampleFormControlSelect1" ng-model="theloai" ng-options="option.value as option.name for option in thename" >
+                    <select style="height: 50px;font-size: 20px" class="form-control" id="exampleFormControlSelect1" ng-model="theLoai" ng-options="option.value as option.name for option in thename" >
                         <!-- <option>Hành Động</option>
                         <option>Tình Cảm</option>
                         <option>Hài</option>
@@ -113,7 +111,7 @@ footer{
                 <form class="form-group">
                     <div class="form-group">
                         <label style="font-size:20px;font-family: 'Righteous', cursive;" for="exampleFormControlTextarea1"><b>Mô tả</b></label>
-                        <textarea  style="font-size: 20px" class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="mota" placeholder="Tóm tắt nội dung, diễn viên,..."></textarea>
+                        <textarea  style="font-size: 20px" class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="moTa" placeholder="Tóm tắt nội dung, diễn viên,..."></textarea>
                     </div>
                     <button ng-click="taoPhim()" style="background: rgb(128, 0, 0);float: right;color: white;padding: 10px;margin-left: 35%;margin-top:10px;height: 55px;font-size: 20px"class="btnanh btn">Tạo phim</button>
 

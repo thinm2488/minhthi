@@ -14,6 +14,9 @@ router.get('/:id', function(req, res, next) {
 
   res.render('movie/detail', { id:id });
 });
+router.get('/user/signup', function(req, res, next) {
+  res.render('user/signup', { title: 'Sign-up' });
+});
 router.get('/user/signin', function(req, res, next) {
   res.render('user/signin', { title: 'Sign-in' });
 });

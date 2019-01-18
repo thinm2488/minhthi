@@ -16,6 +16,7 @@ const layPhim = async function () {//find()= select*
     return {
         listphim: listphim
     }
+
 }
 
 const layChiTietPhim = async function (id) {
@@ -24,6 +25,7 @@ const layChiTietPhim = async function (id) {
         phim: phim
     }
 }
+
 
 module.exports = {
     taoPhim: taoPhim,
