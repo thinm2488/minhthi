@@ -6,7 +6,7 @@ const taoPhim = async function (data) {
     var phim = new Phim(data);
     await phim.save();
     return {
-        phim: phim
+        phim
     };
 
 }
@@ -14,7 +14,7 @@ const taoPhim = async function (data) {
 const layPhim = async function () {//find()= select*
     var listphim = await Phim.find();
     return {
-        listphim: listphim
+        listphim
     }
 
 }
@@ -22,7 +22,7 @@ const layPhim = async function () {//find()= select*
 const layChiTietPhim = async function (id) {
     let phim = await Phim.findOne({ _id: id });
     return {
-        phim: phim
+        phim
     }
 }
 

@@ -6,7 +6,7 @@ const taoUser =async function(data){
     var user=new User(data);
     await user.save();
     return{
-        user:user
+        user
     }
 }
 
@@ -21,16 +21,16 @@ const checkLogin = async function(data){
     let user = await User.findOne({Email:data.Email});
     if(user){
         if(user.password===data.password){
-        return 'Đăng nhập thành công'
+        return true
 
         } 
         else{
-            return 'Sai email hoặc mật khẩu'
+            return false
         }
 
     }
     else{
-        return 'Sai email hoặc mật khẩu'
+        return false
     }
 }
 

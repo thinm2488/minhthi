@@ -50,6 +50,7 @@ app.controller('createController', function ($scope, $http) {
 $scope.theloai= $scope.thename[0].value;
 
 $scope.chooseImage=function(){
+    
     document.getElementById("fileInput").click()
 }
 

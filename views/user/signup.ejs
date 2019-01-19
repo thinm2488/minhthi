@@ -37,6 +37,7 @@
        padding-left: 10%;
        padding-right: 10%;
        padding-bottom:30px;
+        
     }
 
     .btn {
@@ -62,8 +63,8 @@
     
    
     padding-top: 10px;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 30%;
+    padding-right: 30%;
     
     
 }
@@ -80,30 +81,30 @@
         <div style="border: rgb(128, 0, 0) solid;" class="row">
             <div class="col-md-12">
                     <div class="main-header">
-                            <h1><b style="">Đăng Ký</b></h1>
+                            <h1><b>Đăng Ký</b></h1>
                         </div>
-                <form>
+                <form novalidate ng-submit="register()">
                     <div class="form-group">
                         <label for="ten"><b style="font-size:30px; font-family: 'Righteous', cursive;">Tên người dùng:</b></label>
                         <input ng-model="tenNguoiDung"type="text" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
-                            class="form-control" id="tên" placeholder="Nhập tên người dùng">
+                            class="form-control" placeholder="Nhập tên người dùng">
 
                     </div>
                     <div class="form-group">
                             <label for="email"><b style="font-size:30px; font-family: 'Righteous', cursive;">Nhập Email</b></label>
                             <input ng-model="Email"type="email" style="font-size:20px;height: 50px;margin-top: 10px; font-family: 'Righteous', cursive;"
-                                class="form-control" id="email1" aria-describedby="emailHelp" placeholder="Nhập Emal">
+                                class="form-control" aria-describedby="emailHelp" placeholder="Nhập Emal">
     
                         </div>
                     <div class="form-group">
-                        <label for="password"><b style="font-size:30px; font-family: 'Righteous', cursive;">Password</b></label>
+                        <label for="password"><b style="font-size:30px; font-family: 'Righteous', cursive;">Mật khẩu</b></label>
                         <input ng-model="password" type="password" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
-                            class="form-control" id="password1" placeholder="Mật Khẩu">
+                            class="form-control"  placeholder="Mật Khẩu" >
                     </div>
                     <div class="form-group">
-                        <label for="passwordconfim"><b style="font-size:30px; font-family: 'Righteous', cursive;">Password</b></label>
+                        <label for="passwordconfim"><b style="font-size:30px; font-family: 'Righteous', cursive;">Nhập lại mật khẩu</b></label>
                         <input ng-model="passWordConfim"type="password" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
-                            class="form-control" id="passwordconfim1" placeholder="Nhập lại mật khẩu" value= "password1">
+                            class="form-control"  placeholder="Nhập lại mật khẩu" >
                     </div>
                     
 

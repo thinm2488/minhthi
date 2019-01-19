@@ -10,10 +10,7 @@ router.post('/',async function(req,res){
  req.session.token = token;
  var user = await userController.taoUser(req.body);
 
- res.send({
-     user:user
-
- })
+ res.send(user)
 
 });
 router.get('/', async function(req,res){
@@ -26,12 +23,9 @@ router.post('/login',async function(req,res){
 
     var token =jwt.sign({data: req.body.Email}, 'secret', { expiresIn: '1y' });
     req.session.token = token;
-    var user = await userController.checkLogin(req.body);
+    var check = await userController.checkLogin(req.body);
    
-    res.send({
-        user:user
-   
-    })
+    res.send(check)
    
    });
 

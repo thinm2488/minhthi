@@ -13,8 +13,8 @@ app.controller('getController', function ($scope, $http) {
     $scope.logOut = function(){
         $http.get('/api/user').then(function (res) {
 
-               var mess= res.data.mess
-                console.log(res)
+               var mess= res.data.mess;
+               window.location.href="/"
             })
 
     }

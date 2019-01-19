@@ -17,9 +17,7 @@ router.post('/', fileUpload(), async function (req, res) {
     
     file.mv(url + req.files.hinh.name , async function () {
         var phim = await movieController.taoPhim(req.body);
-        res.send({
-            phim: phim
-        })
+        res.send(phim)
     })
 
 });
@@ -42,9 +40,7 @@ router.get('/', async function (req, res) {
 
 router.post('/detail', async function (req, res) {
     var phim = await movieController.layChiTietPhim(req.body.id);
-    res.send({
-        phim: phim
-    })
+    res.send(phim)
 })
 
 module.exports = router;

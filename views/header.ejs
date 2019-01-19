@@ -1,3 +1,9 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+   
+
 <style>
     body {
         background-color: burlywood;
@@ -29,21 +35,44 @@
 
 
         <i>
-            <a href="../"  style="text-decoration: none;float:left;color: wheat;font-size:35px;margin-left: 10px;margin-top:5px;;font-family: 'Righteous', cursive;">
+            <a href="../" style="text-decoration: none;float:left;color: wheat;font-size:35px;margin-left: 10px;margin-top:5px;;font-family: 'Righteous', cursive;">
                 <b><i class="fas fa-home"></i> Trang Chủ</a>
         </i>
 
 
+        <div>
 
-        <a href="../"><i ng-click="logOut()"  ng-show="checkLogin" style="text-decoration: none;color: wheat;font-size:50px;float: right ;margin-right:10px;margin-top:5px "
-            class="fas fa-power-off"></i></a>
+            <a href="#" data-toggle="modal" data-target="#exampleModal"><i ng-show="checkLogin" style="text-decoration: none;color: wheat;font-size:50px;float: right ;margin-right:10px;margin-top:5px "
+                    class="fas fa-power-off"></i></a>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Đăng Xuất</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn chắc chắn muốn đăng xuất?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Trở về</button>
+                            <button ng-click="logOut()"type="button" class="btn btn-primary">Tiếp tục</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            
-        <i ng-show="!checkLogin" >
-        <a href="/user/signin" style="text-decoration: none;color: wheat;font-size:30px;float: right ;margin-right: 30px;margin-top:10px;font-family: 'Righteous', cursive; "><i
-                class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
-        <a href="/user/signup" style="text-decoration: none;color: wheat;font-size:30px;float: right ;margin-right: 30px;margin-top:10px;font-family: 'Righteous', cursive;">
-            <i class="fas fa-user-plus"></i> Đăng Ký</a>
+        </div>
+
+        <i ng-show="!checkLogin">
+            <a href="/user/signin" style="text-decoration: none;color: wheat;font-size:30px;float: right ;margin-right: 30px;margin-top:10px;font-family: 'Righteous', cursive; "><i
+                    class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
+            <a href="/user/signup" style="text-decoration: none;color: wheat;font-size:30px;float: right ;margin-right: 30px;margin-top:10px;font-family: 'Righteous', cursive;">
+                <i class="fas fa-user-plus"></i> Đăng Ký</a>
         </i>
 
         <i ng-show="checkLogin">
@@ -59,4 +88,5 @@
 
 
     </div>
+   
 </div>
