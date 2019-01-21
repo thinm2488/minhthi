@@ -5,8 +5,12 @@ app.controller('getController', function ($scope, $http) {
 
     // Bien chua listphim
        $scope.user = res.data.user;
-        $scope.listphim= res.data.listPhimObj.listphim;
-        $scope.checkLogin=res.data.checkLogin;
+       $scope.listphim= res.data.listPhimObj.listphim;
+       $scope.checkLogin=res.data.checkLogin;
+        
+    //    for( var i=listphim[length-1];i>=0;i--){
+    //    }return listphim;
+    
         console.log(res)
     })
 

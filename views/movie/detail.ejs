@@ -85,12 +85,12 @@ footer{
             <h1><b style="font-size: 50px">{{thongtinphim.tenPhim}}</b></h1>
         </div>
 
-        <div class="row">
+        <div class="row"   style= "width: 80%;margin-left: 150px;">
             
             <div class="col-md-5">
                 <from>
                     <div class="form-group">
-                        <img style="margin-top:10px;object-fit: cover;;height: 500px;width: 800px"src="images/img.jpg" class="img-fluid" alt="Responsive image">
+                        <img style="margin-top:10px;object-fit: cover;;height: 500px;width: 800px"src="images/{{thongtinphim.hinh}}" class="img-fluid" alt="Responsive image">
                 </from>
             </div>
         </div>
@@ -106,7 +106,8 @@ footer{
                     <div class="form-group">
                         <label  for="exampleFormControlTextarea1"><b style="font-size:20px">Mô tả: </b><b  style="font-size:20px">{{thongtinphim.moTa}} </b></label>
                     </div>
-                   
+                    <button  style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 90%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn "><a href="/movie/edit">Sửa</a></button>
+
                     
                 </form>
         </div>

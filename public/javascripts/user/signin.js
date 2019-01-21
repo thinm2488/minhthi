@@ -1,41 +1,35 @@
-var app= angular.module('movie',[]);
+var app = angular.module('movie', []);
 
-app.controller('loginController',function($scope,$http){
-    $scope.checkLogin=false;
-    $scope.dangNhap = function(){
-       
-        if(!$scope.Email){
+app.controller('loginController', function ($scope, $http) {
+    $scope.checkLogin = false;
+    $scope.dangNhap = function () {
+
+        if (!$scope.Email) {
             window.alert('Chưa nhập email !')
         }
-        else if(!$scope.password){
+        else if ($scope.password = '') {
             window.alert('Chưa nhập password !')
         }
-        else{
-            var data={
-            
-                Email:$scope.Email,
-                password:$scope.passWord
-                
-    
+        else {
+            var data = {
+
+                Email: $scope.Email,
+                password: $scope.passWord
+
+
             }
-            $http.post(window.location.origin+'/api/user/login',data).then(function(res){
+            $http.post(window.location.origin + '/api/user/signin', data).then(function (res) {
                 window.console.log(res)
-                if(res.data===true){
-                    window.alert('Đăng nhập thành công');
-                    window.location.href="/"
+                if (res.data === true) {
+                    window.location.href = "/"
                 }
-                else{
+                else {
                     window.alert('Sai email hoặc mật khẩu!')
                 }
-               
-                
-               
+            }).catch(function(res){
+                console.log(res)
             })
-            
         }
-       
-        
-        
     }
 
 });

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html ng-app="movie">
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="shortcut icon" href="../images/icon.jpg"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+
+</head>
+
+<style>
+    body {
+        background-color: burlywood;
+    }
+
+    .main-header {
+        text-align: center;
+        color: rgb(128, 0, 0);
+        font-size: 36px;
+        text-transform: uppercase;
+        font-family: 'Righteous', cursive;
+        margin-top: 30px;
+        margin-left:20%
+    }
+
+  
+
+    .btn {
+        background: rgb(128, 0, 0);
+        color: white;
+        padding: 15px;
+        font-family: 'Righteous', cursive;
+        width: 30%;
+
+    }
+
+    .form-group {
+        color: rgb(128, 0, 0);
+    
+    }
+    footer{
+    position: absolute;
+    width: 100%;
+    bottom:0;
+    margin-left: 0;
+}
+.row{
+    border: rgb(128, 0, 0) solid;
+    height: auto;
+    margin-top: 50px;
+  
+
+    
+    
+}
+
+
+
+</style>
+
+<body ng-controller="profileController">
+    <% include ../header.ejs %>
+
+    <div class="container-fluid">
+       
+
+        <class="row">
+            <div class="col-md-12">
+                 
+                    </div>
+                    <div class="row" style="  margin-left: 15%; margin-right: 15%;">
+                        <div class="main-header">
+                            <h1><b>Thông tin người dùng</b></h1>
+                        </div>
+                        <div class="col-md-5" style="margin-left:20px;margin-bottom:20px">
+                            <from>
+                                <div class="form-group"style="margin-top: 20px">
+                                    <img style="object-fit: cover;height:350px;width: 350px"src="../../../images/user.png" class="img-fluid" alt="Responsive image">
+                                    <button ng-click="chooseImage()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left:30%;margin-top:30px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
+
+                            </from>
+                        </div>
+                    </div>
+                    <div class="col-md-5" style="margin-top: 20px">
+                        <form>
+                           
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1"><b style="font-size:20px">Tên người dùng: </b><p  ng-model="tenNguoiDung" style="font-size:25px">{{userinfomation.tenNguoiDung}}</p></label>
+                            </div>
+                            <div class="form-group date">
+                                    <span ></span><b style="font-size:20px;color:rgb(128, 0, 0);margin-top:50px" >Email: </b><span><p ng-model="email" style="font-size:25px">{{userinfomation.Email}}</p></span><br>
+                            </div>
+                            </form>
+                            <input ng-show="false" type='file' onchange="readURL(this);"  id="fileInput"/>
+                            <button ng-click="chooseImage()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 80%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Sửa</button>
+
+                           
+
+                    </div>
+
+                   
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <% include ../footer.ejs %>
+    </footer>
+
+
+       
+
+
+</body>
+<script src="stylesheet" href="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+        $("#datepicker").datepicker("setDate", new Date());
+    });
+</script>
+
+<script src="/javascripts/user/profile.js"></script>
+
+
+</html>

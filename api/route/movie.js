@@ -8,7 +8,7 @@ const path= require('path');
 
 
 router.post('/', fileUpload(), async function (req, res) {
-
+try {
     var file = req.files.hinh;
 
     req.body.hinh = file.name;
@@ -19,28 +19,50 @@ router.post('/', fileUpload(), async function (req, res) {
         var phim = await movieController.taoPhim(req.body);
         res.send(phim)
     })
+    
+} catch (error) {
+    
+}
+
 
 });
 
 router.get('/', async function (req, res) {
-    var listphim = await movieController.layPhim();
-    var checkLogin = false;
-    var token = req.session.token;
-    if (token) {
-        var emailObj = jwt.decode(token);
-        var user = await userController.getUserByEmail(emailObj.data);
-        checkLogin = true;
+    try {
+        var listphim = await movieController.layPhim();
+    
+        var checkLogin = false;
+        var token = req.session.token;
+        if (token) {
+            var emailObj = jwt.decode(token);
+            var user = await userController.getUserByEmail(emailObj.data);
+            checkLogin = true;
+        }
+        res.send({
+            listPhimObj: listphim,
+            checkLogin: checkLogin,
+            user: user
+        })
+    } catch (error) {
+        
     }
-    res.send({
-        listPhimObj: listphim,
-        checkLogin: checkLogin,
-        user: user
-    })
+   
 })
 
 router.post('/detail', async function (req, res) {
-    var phim = await movieController.layChiTietPhim(req.body.id);
+    try {
+        var phim = await movieController.layChiTietPhim(req.body.id);
     res.send(phim)
+    } catch (error) {
+        
+    }
+    
 })
+router.post('/edit',async function(req,res){
+    var movieId = req.body.movieId;
+    var movie = await movieController.layChiTietPhim(movieId);
+    res.send(movie);
+ 
+ })
 
 module.exports = router;

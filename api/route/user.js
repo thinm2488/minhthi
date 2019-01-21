@@ -1,34 +1,67 @@
-var express= require('express');
-var session=require('express-session')
-var router=express.Router();
-var userController=require('../controller/userController');
-var jwt=require('jsonwebtoken');
+var express = require('express');
+var session = require('express-session')
+var router = express.Router();
+var userController = require('../controller/userController');
+var jwt = require('jsonwebtoken');
 
-router.post('/',async function(req,res){
+router.get('/profile', async function(req,res){
+    try {
+        var token= req.session.token;
+        var emailObj = jwt.decode(token);
+        var userInfomation= await userController.getUserByEmail(emailObj.data)
+        res.send(userInfomation)
+    } catch (error) {
+        
+    }
+})
 
- var token =jwt.sign({data: req.body.Email}, 'secret', { expiresIn: '1y' });
- req.session.token = token;
- var user = await userController.taoUser(req.body);
+router.post('/', async function (req, res) {
+try {
+        // var checkEmail= req.data.body.Email
+        var token = jwt.sign({ data: req.body.Email }, 'secret', { expiresIn: '1y' });
+        //  if(!checkEmail){
+    
+        //  }
+        req.session.token = token;
+        //  if(req.body.Email)
+        var user = await userController.taoUser(req.body);
+    
+        res.send(user)
+} catch (error) {
+    console.log(error)
+    res.status(500).send({errorMessage: error.message})
+}
 
- res.send(user)
 
 });
-router.get('/', async function(req,res){
-    req.session.destroy();
-    res.send({
-        mess: 'LogOut Thành công'
-    })
+router.get('/', async function (req, res) {
+    try {
+        req.session.destroy();
+        res.send({
+            mess: 'LogOut Thành công'
+        })
+        
+    } catch (error) {
+        
+    }
+   
 })
-router.post('/login',async function(req,res){
-
-    var token =jwt.sign({data: req.body.Email}, 'secret', { expiresIn: '1y' });
+router.post('/signin', async function (req, res) {
+try {
+    var token = jwt.sign({ data: req.body.Email }, 'secret', { expiresIn: '1y' });
     req.session.token = token;
     var check = await userController.checkLogin(req.body);
-   
+
     res.send(check)
-   
-   });
+} catch (error) {
+    
+}
 
 
-module.exports=router;
+  
+
+});
+
+
+module.exports = router;
 

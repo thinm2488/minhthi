@@ -4,7 +4,8 @@ var UserSchema = new Schema(
     {
         tenNguoiDung: { type: String },
         Email: { type: String },
-        password: { type: String }
+        password: { type: String },
+        hinh:{type:String}
         
 
     }

@@ -3,11 +3,26 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 const taoUser =async function(data){
-    var user=new User(data);
-    await user.save();
-    return{
-        user
+    let user = await User.findOne({Email:data.Email});
+    if(user){
+        throw new Error('Email đã được sử dụng ! ')
     }
+    // if(Email)
+    // {
+    //     window.alert('Email đã được sử dụng!')
+    // }else{
+    //     var user=new User(data);
+    //     await user.save();
+    //     return{
+    //         user
+    //     }
+    // }
+     user=new User(data);
+        await user.save();
+        return{
+            user
+        }
+   
 }
 
 const getUserByEmail = async function(email){
@@ -15,6 +30,7 @@ const getUserByEmail = async function(email){
     return   user;
     
 }
+
 
 
 const checkLogin = async function(data){

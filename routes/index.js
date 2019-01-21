@@ -20,6 +20,13 @@ router.get('/user/signup', function(req, res, next) {
 router.get('/user/signin', function(req, res, next) {
   res.render('user/signin', { title: 'Sign-in' });
 });
+router.get('/user/profile', function(req, res, next) {
+  res.render('user/profile', { title: 'Use profile' });
+});
+router.get('/movie/edit', function(req, res, next) {
+  res.render('movie/edit', { title: 'Edit movie' });
+});
+
 
 
 

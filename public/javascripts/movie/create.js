@@ -6,6 +6,8 @@ app.controller('createController', function ($scope, $http) {
     $scope.checkLogin=true;
     $scope.taoPhim = function () {
         // thoi gian hien hanh jquery
+        $scope.tempImage = '../../images/img'
+    
         var ngay = $("#datepicker").datepicker("getDate").getTime();
 
         formData.append("tenPhim",$scope.tenPhim);
@@ -21,7 +23,10 @@ app.controller('createController', function ($scope, $http) {
            }).then(function(res){
                 window.alert('Tạo phim thành công');
                 window.location.href="/";
-           })
+           }).catch(function(res){
+            console.log(res)
+        })
+
       
         // var data = {
         //     tenPhim: $scope.tenPhim,
@@ -67,6 +72,10 @@ function readURL(input) {
         };
 
         reader.readAsDataURL(input.files[0]);
-        formData.append("hinh",input.files[0]);
+       
+             formData.append("hinh",input.files[0]);
+        
+       
+        
     }
 }

@@ -29,6 +29,9 @@ app.controller('userController',function($scope,$http){
             $http.post(window.location.origin+'/api/user',data).then(function(res){
                 window.alert('Đăng ký thành công');
                 window.location.href="/"
+            }).catch(function(res){
+                console.log(res)
+                window.alert(res.data.errorMessage);
             })
         }
         
@@ -38,6 +41,7 @@ app.controller('userController',function($scope,$http){
         
         
     }
+    
 
 });
 
