@@ -15,11 +15,13 @@ app.controller('loginController', function ($scope, $http) {
                 Email: $scope.Email,
                 password: $scope.passWord
             }
-            $http.post(window.location.origin + '/api/user/signin', data).then(function (res) {
+            $http.post( '/api/user/signin', data).then(function (res) {
                 window.console.log(res)
-                setCookie("nguoiTao",Email);
+                
                 if (res.data === true) {
+                    
                     window.location.href = "/"
+                    
                 }
                 else {
                     window.alert('Sai email hoặc mật khẩu!')

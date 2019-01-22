@@ -48,8 +48,8 @@ app.controller('editController', function ($scope, $http) {
 
 
         $scope.suaPhim = function () {
-            var ngay = $("#datepicker").datepicker("getDate").getTime();
 
+            var ngay = $("#datepicker").datepicker("getDate").getTime();
             formData.append("tenPhim", $scope.tenPhim);
             formData.append("moTa", $scope.moTa);
             formData.append("theLoai", $scope.theLoai);
@@ -79,7 +79,14 @@ app.controller('editController', function ($scope, $http) {
     }
 
 
+    $scope.logOut = function(){
+        $http.get('/api/user').then(function (res) {
 
+               var mess= res.data.mess;
+               window.location.href="/"
+            })
+
+    }
 
 });
 

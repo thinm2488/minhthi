@@ -8,7 +8,16 @@ app.controller('editprofileController', function ($scope, $http) {
     $http.get("/api/user/profile").then(function(res){
         $scope.tenNguoiDung = res.data.tenNguoiDung;
         $scope.Email = res.data.Email;
-        $scope.hinh =res.data.hinh;       
+        $scope.hinh =res.data.hinh;
+        $scope.checkImage=function(){
+            if(!res.data.hinh){
+                return true;
+            }else{
+                return false;
+            }
+             
+         }
+             
     });
 
     $scope.editProfile = function () {
@@ -35,7 +44,14 @@ app.controller('editprofileController', function ($scope, $http) {
     
         document.getElementById("fileUpdateImage").click()
     }
+    $scope.logOut = function(){
+        $http.get('/api/user').then(function (res) {
 
+               var mess= res.data.mess;
+               window.location.href="/"
+            })
+
+    }
  
 });
 

@@ -7,9 +7,9 @@ app.controller('createController', function ($scope, $http) {
     $scope.taoPhim = function () {
         // thoi gian hien hanh jquery
         // $scope.tempImage = '../../images/img'
-    
+        var email=getCookie("email");    
         var ngay = $("#datepicker").datepicker("getDate").getTime();
-        var email= getCookie("nguoiTao");
+        
         formData.append("tenPhim",$scope.tenPhim);
         formData.append("moTa",$scope.moTa);
         formData.append("theLoai",$scope.theLoai);
@@ -24,6 +24,7 @@ app.controller('createController', function ($scope, $http) {
             data    : formData,
             headers : { 'Content-Type': undefined } 
            }).then(function(res){
+                $scope.checkLogin=res.data.checkLogin;
                 window.alert('Tạo phim thành công');
                 window.location.href="/";
            }).catch(function(res){
@@ -62,7 +63,14 @@ $scope.chooseImage=function(){
     document.getElementById("fileInput").click()
 }
 
+$scope.logOut = function(){
+    $http.get('/api/user').then(function (res) {
 
+           var mess= res.data.mess;
+           window.location.href="/"
+        })
+
+}
 });
 
 function readURL(input) {

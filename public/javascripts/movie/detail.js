@@ -7,9 +7,10 @@ app.controller('detailController', function ($scope, $http) {
     //     setCookie("movieId",id);
     //     window.location.href=$scope.id +'/edit'
     // }
-    
+    var email= getCookie("email");
     var data= {
         id:$scope.id,
+        email
     
     }
 
@@ -17,6 +18,17 @@ app.controller('detailController', function ($scope, $http) {
          $scope.thongtinphim= res.data.phim;
          $scope.checkLogin=res.data.checkLogin;
          $scope.user=res.data.user;
+         $scope.checkuser= function(){
+         if(res.data.phim.phim.nguoiTao===email)
+         {
+             return true;
+         }else{
+             return false;
+         }
+         
+        }
+
+        
          
 
          
@@ -25,6 +37,7 @@ app.controller('detailController', function ($scope, $http) {
     }).catch(function(res){
         console.log(res)
     })
+  
    
     $scope.xoaPhim= function(){
         $http.post("/api/movie/xoadetail", data).then(function(res){
@@ -40,7 +53,14 @@ app.controller('detailController', function ($scope, $http) {
     }
     
 
-   
+    $scope.logOut = function(){
+        $http.get('/api/user').then(function (res) {
+
+               var mess= res.data.mess;
+               window.location.href="/"
+            })
+
+    } 
 
 });
 

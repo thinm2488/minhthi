@@ -6,6 +6,14 @@ app.controller('profileController', function ($scope, $http) {
     $scope.checkLogin=true;
     $http.get(window.location.origin+"/api/user/profile").then(function(res){
          $scope.userinfomation= res.data;
+         $scope.checkImage=function(){
+            if(!res.data.hinh){
+                return true;
+            }else{
+                return false;
+            }
+             
+         }
         
        
     }).catch(function(res){
@@ -16,7 +24,14 @@ app.controller('profileController', function ($scope, $http) {
     
     //     document.getElementById("fileInput").click()}
    
+    $scope.logOut = function(){
+        $http.get('/api/user').then(function (res) {
 
+               var mess= res.data.mess;
+               window.location.href="/"
+            })
+
+    }
 });
 // function readURL(input) {
 //     if (input.files && input.files[0]) {

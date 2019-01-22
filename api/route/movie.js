@@ -18,7 +18,16 @@ router.post('/', fileUpload(), async function (req, res) {
 
         file.mv(url + req.files.hinh.name, async function () {
             var phim = await movieController.taoPhim(req.body);
-            res.send(phim)
+            var token = req.session.token;
+            if (token) {
+                var emailObj = jwt.decode(token);
+                var user = await userController.getUserByEmail(emailObj.data);
+                checkLogin = true;
+            }
+            res.send({
+                phim,
+                user:user
+            })
         })
 
     } catch (error) {

@@ -29,9 +29,8 @@ app.controller('userController',function($scope,$http){
             
             $http.post(window.location.origin+'/api/user',data).then(function(res){
                 console.log(res)
-                setCookie('name',res.data.user.tenNguoiDung);
+                setCookie('email',res.data.user.Email);
                 window.alert('Đăng ký thành công');
-
                 window.location.href="/"
             }).catch(function(res){
                 console.log(res)
