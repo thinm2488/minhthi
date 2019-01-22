@@ -1,7 +1,8 @@
 var app= angular.module('movie',[]);
 
-app.controller('userController',function($scope,$http){
 
+app.controller('userController',function($scope,$http){
+    
     $scope.taoUser = function(){
         
         if(!$scope.tenNguoiDung){
@@ -27,7 +28,10 @@ app.controller('userController',function($scope,$http){
             }
             
             $http.post(window.location.origin+'/api/user',data).then(function(res){
+                console.log(res)
+                setCookie('name',res.data.user.tenNguoiDung);
                 window.alert('Đăng ký thành công');
+
                 window.location.href="/"
             }).catch(function(res){
                 console.log(res)
@@ -35,7 +39,7 @@ app.controller('userController',function($scope,$http){
             })
         }
         
-
+        
 
 
         

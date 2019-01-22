@@ -82,7 +82,7 @@ footer{
     <p id="id" ng-show="false"><%= id %></p>
     <div class="container-fluid">
         <div class="main-header">
-            <h1><b style="font-size: 50px">{{thongtinphim.tenPhim}}</b></h1>
+            <h1><b style="font-size: 50px">{{thongtinphim.phim.tenPhim}}</b></h1>
         </div>
 
         <div class="row"   style= "width: 80%;margin-left: 150px;">
@@ -90,7 +90,7 @@ footer{
             <div class="col-md-5">
                 <from>
                     <div class="form-group">
-                        <img style="margin-top:10px;object-fit: cover;;height: 500px;width: 800px"src="images/{{thongtinphim.hinh}}" class="img-fluid" alt="Responsive image">
+                        <img style="margin-top:10px;object-fit: cover;;height: 500px;width: 800px"src="images/{{thongtinphim.phim.hinh}}" class="img-fluid" alt="Responsive image">
                 </from>
             </div>
         </div>
@@ -98,15 +98,16 @@ footer{
             <form>
                
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1"><b style="font-size:20px">Thể loại phim: </b><b  style="font-size:20px">{{thongtinphim.theLoai}}</b></label>
+                    <label for="exampleFormControlSelect1"><b style="font-size:20px">Thể loại phim: </b><b  style="font-size:20px">{{thongtinphim.phim.theLoai}}</b></label>
                 </div>
                 <div class="form-group date">
-                        <span ng-non-bindable></span><b style="font-size:20px;color:rgb(128, 0, 0);margin-top:50px" >Khởi Chiếu: </b><span><b  style="font-size:20px">{{thongtinphim.phatHanh | date:'MM/dd/yyyy'}}</b></span><br>
+                        <span ng-non-bindable></span><b style="font-size:20px;color:rgb(128, 0, 0);margin-top:50px" >Khởi Chiếu: </b><span><b  style="font-size:20px">{{thongtinphim.phim.phatHanh | date:'dd/MM/yyyy'}}</b></span><br>
                 </div>
                     <div class="form-group">
-                        <label  for="exampleFormControlTextarea1"><b style="font-size:20px">Mô tả: </b><b  style="font-size:20px">{{thongtinphim.moTa}} </b></label>
+                        <label  for="exampleFormControlTextarea1"><b style="font-size:20px">Mô tả: </b><b  style="font-size:20px">{{thongtinphim.phim.moTa}} </b></label>
                     </div>
-                    <button  style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 90%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn "><a href="/movie/edit">Sửa</a></button>
+                    <button  ng-show="checkLogin" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 90%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn "><a style=" text-decoration: none;color:white;" href="/edit/{{id}}">Sửa</a></button>
+                    <button  ng-show="checkLogin" ng-click="xoaPhim()"style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 0;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Xóa</button>
 
                     
                 </form>

@@ -6,14 +6,17 @@ app.controller('createController', function ($scope, $http) {
     $scope.checkLogin=true;
     $scope.taoPhim = function () {
         // thoi gian hien hanh jquery
-        $scope.tempImage = '../../images/img'
+        // $scope.tempImage = '../../images/img'
     
         var ngay = $("#datepicker").datepicker("getDate").getTime();
-
+        var email= getCookie("nguoiTao");
         formData.append("tenPhim",$scope.tenPhim);
         formData.append("moTa",$scope.moTa);
         formData.append("theLoai",$scope.theLoai);
         formData.append("phatHanh",ngay);
+        formData.append("nguoiTao",email)
+        
+        
         
         $http({
             method  : 'POST',
@@ -63,7 +66,7 @@ $scope.chooseImage=function(){
 });
 
 function readURL(input) {
-    if (input.files && input.files[0]) {
+    if (input.files  && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
@@ -73,9 +76,6 @@ function readURL(input) {
 
         reader.readAsDataURL(input.files[0]);
        
-             formData.append("hinh",input.files[0]);
-        
-       
-        
+             formData.append("hinh",input.files[0]); 
     }
 }

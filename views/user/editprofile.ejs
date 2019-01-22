@@ -68,7 +68,7 @@
 
 </style>
 
-<body ng-controller="profileController">
+<body ng-controller="editprofileController">
     <% include ../header.ejs %>
 
     <div class="container-fluid">
@@ -85,8 +85,9 @@
                         <div class="col-md-5" style="margin-left:20px;margin-bottom:20px">
                             <from>
                                 <div class="form-group"style="margin-top: 20px">
-                                    <img style="object-fit: cover;height:350px;width: 350px"src="../../../images/{{userinfomation.hinh}}" class="img-fluid" alt="Responsive image">
-                                    <button ng-show="false" ng-click="chooseImage()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left:30%;margin-top:30px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
+                                    <img style="object-fit: cover;height:350px;width: 350px"src="../../../images/{{hinh}}" id="img" class="img-fluid" alt="Responsive image">
+                                    <input ng-show="false" type="file" onchange="readURL(this)"  id="fileUpdateImage"/>
+                                    <button ng-click="chooseImage()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left:30%;margin-top:30px;height: 55px;width: auto;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
 
                             </from>
                         </div>
@@ -95,14 +96,20 @@
                         <form>
                            
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1"><b style="font-size:20px">Tên người dùng: </b><p  ng-model="tenNguoiDung" style="font-size:25px">{{userinfomation.tenNguoiDung}}</p></label>
+                                <label for="ten"><b style="font-size:30px; font-family: 'Righteous', cursive;">Tên người dùng:</b></label>
+                                <input ng-model="tenNguoiDung"type="text" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
+                                    class="form-control" placeholder="Nhập tên người dùng">
+        
                             </div>
-                            <div class="form-group date">
-                                    <span ></span><b style="font-size:20px;color:rgb(128, 0, 0);margin-top:50px" >Email: </b><span><p ng-model="email" style="font-size:25px">{{userinfomation.Email}}</p></span><br>
-                            </div>
+                            <div class="form-group">
+                                    <label for="email"><b style="font-size:30px; font-family: 'Righteous', cursive;">Nhập Email</b></label>
+                                    <input ng-model="Email"type="email" style="font-size:20px;height: 50px;margin-top: 10px; font-family: 'Righteous', cursive;"
+                                        class="form-control" aria-describedby="emailHelp" placeholder="Nhập Emal">
+            
+                                </div>
                             </form>
                             
-                            <button style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 80%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn "><a  style="color:rgb(128, 0, 0);color: white;"href="/user/editprofile">Sửa</a></button>
+                            <button ng-click="editProfile()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 80%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Lưu</button>
 
                            
 
@@ -136,7 +143,7 @@
     });
 </script>
 
-<script src="/javascripts/user/profile.js"></script>
+<script src="/javascripts/user/editprofile.js"></script>
 
 
 </html>

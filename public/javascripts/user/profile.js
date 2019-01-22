@@ -12,24 +12,24 @@ app.controller('profileController', function ($scope, $http) {
         console.log(res)
     })
      
-    $scope.chooseImage=function(){
+    // $scope.chooseImage=function(){
     
-        document.getElementById("fileInput").click()}
+    //     document.getElementById("fileInput").click()}
    
 
 });
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+// function readURL(input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
 
-        reader.onload = function (e) {
-            $('#img')
-                .attr('src', e.target.result);
-        };
+//         reader.onload = function (e) {
+//             $('#img')
+//                 .attr('src', e.target.result);
+//         };
 
-        reader.readAsDataURL(input.files[0]);
-        formData.append("hinh",input.files[0]);
+//         reader.readAsDataURL(input.files[0]);
+//         formData.append("hinh",input.files[0]);
                
-        
-    }
-}
+         
+//     }
+// }

@@ -12,14 +12,12 @@ app.controller('loginController', function ($scope, $http) {
         }
         else {
             var data = {
-
                 Email: $scope.Email,
                 password: $scope.passWord
-
-
             }
             $http.post(window.location.origin + '/api/user/signin', data).then(function (res) {
                 window.console.log(res)
+                setCookie("nguoiTao",Email);
                 if (res.data === true) {
                     window.location.href = "/"
                 }

@@ -2,9 +2,7 @@
 <html ng-app="movie">
 
 <head>
-    <title>
-        <%= title %>
-    </title>
+    
     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
@@ -64,11 +62,13 @@ footer{
  </style>
 
 <body ng-controller="editController">
+        
     <% include ../header.ejs %>
 
+    <p id="id" ng-show="false"><%= id %></p>
     <div class="container-fluid">
         <div class="main-header">
-            <h1><b>Tạo phim mới</b></h1>
+            <h1><b>Chỉnh sửa phim</b></h1>
         </div>
 
         <div class="row">
@@ -77,10 +77,10 @@ footer{
                 <from>
                     <div class="form-group">
 
-                        <img id="img" style=" margin-left: 120px;height: 460px;width: 750p;object-fit: cover"src="../images/img.jpg" class="img-fluid" alt="Responsive image">
+                        <img id="img" style=" margin-left: 120px;height: 460px;width: 750p;object-fit: cover"src="../images/{{hinh}}" class="img-fluid" alt="Responsive image">
 
                 </from>
-                <input ng-show="false" type='file' onchange="readURL(this);"  id="fileInput"/>
+                <input ng-show="false" type='file' onchange="readURL(this);"  id="fileUpdate"/>
                 <button ng-click="chooseImage()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 50%;margin-top:30px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
             </div>
 
@@ -115,7 +115,7 @@ footer{
                         <textarea  style="font-size: 20px" class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="moTa" placeholder="Tóm tắt nội dung, diễn viên,..."></textarea>
                     </div>
                     
-                    <button ng-click="taoPhim()" style="background: rgb(128, 0, 0);float: right;color: white;padding: 10px;margin-left: 35%;margin-top:10px;height: 55px;font-size: 20px"class="btnanh btn">Tạo phim</button>
+                    <button ng-click="suaPhim()" style="background: rgb(128, 0, 0);float: right;color: white;padding: 10px;margin-left: 35%;margin-top:10px;height: 55px;font-size: 20px"class="btnanh btn">Lưu thay đổi</button>
 
                 </form>
 

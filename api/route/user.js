@@ -3,6 +3,8 @@ var session = require('express-session')
 var router = express.Router();
 var userController = require('../controller/userController');
 var jwt = require('jsonwebtoken');
+var fileUpload = require('express-fileupload');
+const path = require('path');
 
 router.get('/profile', async function(req,res){
     try {
@@ -14,6 +16,16 @@ router.get('/profile', async function(req,res){
         
     }
 })
+// router.get('/editprofile', async function(req,res){
+//     try {
+//         var token=req.session.token;
+//         var emailObj=jwt.decode(token);
+//         var getUser= await editprofileController.getUserByEmail(emailObj.data)
+//         res.send(getUser)
+//     } catch (error) {
+        
+//     }
+// })
 
 router.post('/', async function (req, res) {
 try {
@@ -56,10 +68,26 @@ try {
 } catch (error) {
     
 }
+});
 
+router.put('/', fileUpload() ,async function (req, res) {
 
-  
+    try {
+        var file = req.files.hinh;
 
+        req.body.hinh = file.name;
+
+        // luu file
+        var url = path.join(path.join(__dirname, '../../'), 'public/images/');
+
+        file.mv(url + req.files.hinh.name, async function () {
+            var user = await userController.editProfile(req.body);
+            res.send(user)
+        })
+
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 

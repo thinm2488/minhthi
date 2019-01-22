@@ -6,6 +6,10 @@ var MovieSchema = new Schema(
         theLoai: { type: String },
         phatHanh: { type: Number },
         moTa: { type: String },
+        hinh:{type:String},
+        ngayTao:{type: Number, default: Date.now()},
+        nguoiTao:{type:String}
+        
         
 
     }
