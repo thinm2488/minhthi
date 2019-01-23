@@ -7,6 +7,7 @@ const taoUser = async function (data) {
     if (user) {
         throw new Error('Email đã được sử dụng ! ')
     }
+  
     // if(Email)
     // {
     //     window.alert('Email đã được sử dụng!')
@@ -54,8 +55,9 @@ const editProfile = async function (data) {
     
         user.Email=data.Email;
         user.tenNguoiDung=data.tenNguoiDung;
+        if(data.hinh){
         user.hinh=data.hinh;
-    
+        }
     
     await user.save();
     return {

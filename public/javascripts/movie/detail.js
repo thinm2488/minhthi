@@ -7,6 +7,7 @@ app.controller('detailController', function ($scope, $http) {
     //     setCookie("movieId",id);
     //     window.location.href=$scope.id +'/edit'
     // }
+    $scope.tenNguoiDung=getCookie("tenNguoiDung");
     var email= getCookie("email");
     var data= {
         id:$scope.id,
@@ -42,9 +43,8 @@ app.controller('detailController', function ($scope, $http) {
     $scope.xoaPhim= function(){
         $http.post("/api/movie/xoadetail", data).then(function(res){
             $scope.checkLogin=res.data.checkLogin;
-            var mess= res.data.result.mess;
-            window.alert(mess);
-            window.location.href="/";;
+            window.alert('Xóa phim thành công!');
+            window.location.href="/";
             
        }).catch(function(res){
            console.log(res)
@@ -56,7 +56,7 @@ app.controller('detailController', function ($scope, $http) {
     $scope.logOut = function(){
         $http.get('/api/user').then(function (res) {
 
-               var mess= res.data.mess;
+               
                window.location.href="/"
             })
 

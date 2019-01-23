@@ -3,6 +3,7 @@ var formData= new FormData();
 
 app.controller('createController', function ($scope, $http) {
 
+    $scope.tenNguoiDung=getCookie("tenNguoiDung");
     $scope.checkLogin=true;
     $scope.taoPhim = function () {
         // thoi gian hien hanh jquery

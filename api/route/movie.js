@@ -9,14 +9,10 @@ const path = require('path');
 
 router.post('/', fileUpload(), async function (req, res) {
     try {
-        var file = req.files.hinh;
 
-        req.body.hinh = file.name;
 
-        // luu file
-        var url = path.join(path.join(__dirname, '../../'), 'public/images/');
-
-        file.mv(url + req.files.hinh.name, async function () {
+        if (!req.files) {
+            req.body.hinh = "img.jpg"
             var phim = await movieController.taoPhim(req.body);
             var token = req.session.token;
             if (token) {
@@ -24,21 +20,40 @@ router.post('/', fileUpload(), async function (req, res) {
                 var user = await userController.getUserByEmail(emailObj.data);
                 checkLogin = true;
             }
-            res.send({
-                phim,
-                user:user
+
+        } else {
+            var file = req.files.hinh;
+
+            req.body.hinh = file.name
+            var url = path.join(path.join(__dirname, '../../'), 'public/images/');
+
+            file.mv(url + req.files.hinh.name, async function () {
+                var phim = await movieController.taoPhim(req.body);
+                var token = req.session.token;
+                if (token) {
+                    var emailObj = jwt.decode(token);
+                    var user = await userController.getUserByEmail(emailObj.data);
+                    checkLogin = true;
+                }
+
             })
+        }
+
+        res.send({
+            phim,
+            user: user
         })
 
     } catch (error) {
-        console.log(error);
+        console.log(error)
+        res.status(500).send({ errorMessage: error.message })
     }
 
 
 });
 
 router.get('/', async function (req, res) {
-try {
+    try {
         var listphim = await movieController.layPhim();
 
         var checkLogin = false;
@@ -52,9 +67,10 @@ try {
             listPhimObj: listphim,
             checkLogin: checkLogin,
             user: user
-        })    
+        })
     } catch (error) {
-
+        console.log(error)
+        res.status(500).send({ errorMessage: error.message })
     }
 
 })
@@ -75,31 +91,44 @@ router.post('/detail', async function (req, res) {
             user: user
         })
     } catch (error) {
-
+        console.log(error)
+        res.status(500).send({ errorMessage: error.message })
     }
 
 })
-router.put('/', fileUpload() ,async function (req, res) {
+router.put('/', fileUpload(), async function (req, res) {
 
     try {
-        var file = req.files.hinh;
+        var phim;
 
-        req.body.hinh = file.name;
+        if (!req.files) {
+            // req.body.hinh = "img.jpg"
+            phim = await movieController.suaPhim(req.body);
+          
+        } else {
+            var file = req.files.hinh;
 
-        // luu file
-        var url = path.join(path.join(__dirname, '../../'), 'public/images/');
+            req.body.hinh = file.name
+            var url = path.join(path.join(__dirname, '../../'), 'public/images/');
 
-        file.mv(url + req.files.hinh.name, async function () {
-            var phim = await movieController.suaPhim(req.body);
-            res.send(phim)
+            file.mv(url + req.files.hinh.name, async function () {
+                phim = await movieController.suaPhim(req.body);
+              
+
+            })
+        }
+
+        res.send({
+            phim,
+            user: user
         })
 
     } catch (error) {
-        console.log(error);
+        console.log(error)
+        res.status(500).send({ errorMessage: error.message })
     }
 
-
-})
+});
 router.post('/xoadetail', async function (req, res) {
     try {
         var phim = await movieController.xoaPhim(req.body.id);
@@ -110,12 +139,15 @@ router.post('/xoadetail', async function (req, res) {
             var user = await userController.getUserByEmail(emailObj.data);
             checkLogin = true;
         }
+
         res.send({
-            
+
             checkLogin: checkLogin,
             user: user
         })
     } catch (error) {
+        console.log(error)
+        res.status(500).send({ errorMessage: error.message })
 
     }
 });

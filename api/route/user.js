@@ -11,7 +11,11 @@ router.get('/profile', async function(req,res){
         var token= req.session.token;
         var emailObj = jwt.decode(token);
         var userInfomation= await userController.getUserByEmail(emailObj.data)
-        res.send(userInfomation)
+      
+        res.send({
+            userInfomation,
+            
+        })
     } catch (error) {
         
     }
@@ -38,7 +42,9 @@ try {
         //  if(req.body.Email)
         var user = await userController.taoUser(req.body);
     
-        res.send(user)
+        res.send({
+            user,
+        })
 } catch (error) {
     console.log(error)
     res.status(500).send({errorMessage: error.message})
@@ -54,6 +60,8 @@ router.get('/', async function (req, res) {
         })
         
     } catch (error) {
+        console.log(error)
+        res.status(500).send({errorMessage: error.message})
         
     }
    
@@ -66,7 +74,8 @@ try {
 
     res.send(check)
 } catch (error) {
-    
+    console.log(error)
+        res.status(500).send({errorMessage: error.message})
 }
 });
 
@@ -76,6 +85,7 @@ router.put('/', fileUpload() ,async function (req, res) {
         var file = req.files.hinh;
 
         req.body.hinh = file.name;
+        
 
         // luu file
         var url = path.join(path.join(__dirname, '../../'), 'public/images/');
@@ -86,7 +96,8 @@ router.put('/', fileUpload() ,async function (req, res) {
         })
 
     } catch (error) {
-        console.log(error);
+        console.log(error)
+        res.status(500).send({errorMessage: error.message})
     }
 });
 

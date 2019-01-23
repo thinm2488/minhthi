@@ -2,18 +2,19 @@ var app = angular.module('movie', []);
 
 app.controller('profileController', function ($scope, $http) {
     
-    
+    $scope.tenNguoiDung=getCookie("tenNguoiDung");
     $scope.checkLogin=true;
     $http.get(window.location.origin+"/api/user/profile").then(function(res){
-         $scope.userinfomation= res.data;
-         $scope.checkImage=function(){
-            if(!res.data.hinh){
-                return true;
-            }else{
-                return false;
-            }
+         $scope.userinfomation= res.data.userInfomation;
+        
+        //  $scope.checkImage=function(){
+        //     if(!res.data.hinh){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
              
-         }
+        //  }
         
        
     }).catch(function(res){

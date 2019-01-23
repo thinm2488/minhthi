@@ -1,6 +1,7 @@
 var app = angular.module('movie', []);
 
 app.controller('getController', function ($scope, $http) {
+    $scope.tenNguoiDung=getCookie("tenNguoiDung");
     $http.get('api/movie').then(function (res) {
 
     // Bien chua listphim
@@ -25,7 +26,7 @@ app.controller('getController', function ($scope, $http) {
             })
 
     }
-    
+  
     
    
 

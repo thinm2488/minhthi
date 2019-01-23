@@ -6,17 +6,17 @@ app.controller('editprofileController', function ($scope, $http) {
     
     $scope.checkLogin=true;
     $http.get("/api/user/profile").then(function(res){
-        $scope.tenNguoiDung = res.data.tenNguoiDung;
-        $scope.Email = res.data.Email;
-        $scope.hinh =res.data.hinh;
-        $scope.checkImage=function(){
-            if(!res.data.hinh){
-                return true;
-            }else{
-                return false;
-            }
+        $scope.tenNguoiDung = res.data.userInfomation.tenNguoiDung;
+        $scope.Email = res.data.userInfomation.Email;
+        $scope.hinh =res.data.userInfomation.hinh;
+        // $scope.checkImage=function(){
+        //     if(!res.data.hinh){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
              
-         }
+        //  }
              
     });
 

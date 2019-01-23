@@ -36,8 +36,19 @@
 
         <i>
             <a href="../" style="text-decoration: none;float:left;color: wheat;font-size:35px;margin-left: 10px;margin-top:5px;;font-family: 'Righteous', cursive;">
-                <b><i class="fas fa-home"></i> Trang Chủ</a>
+                <b><i class="fas fa-home"></i> Trang Chủ</a><input style="float: left;height: 40px;font-size: 20px; margin-left: 20px;margin-top: 10px;width: 250px;"type="text" class="form-control"  id="clickfilter" placeholder="Nhập tên phim" ng-model="tenPhim"><i style="margin-left: 10px;margin-top:10px;float: left;color: wheat;font-size:35px" class="fas fa-search"></i>
+                    <select id="theLoai"class="form-control"style="float:left;height: 40px;font-size: 20px; margin-left: 20px;margin-top: 10px;width: 150px;" >
+                        <option>Hành Động</option>
+                        <option>Tình Cảm</option>
+                        <option>Hài</option>
+                        <option>Kinh Dị</option>
+                        <option>Hoạt Hình</option>
+                    </select>
+                    
         </i>
+   
+        
+      
 
 
         <div>
@@ -81,7 +92,7 @@
         </i>
         <i ng-show="checkLogin">
             <a href="/user/profile" style="text-decoration: none;color: wheat;font-size:30px;float: right ;margin-right: 15px;margin-top:10px ;font-family: 'Righteous', cursive;">
-                <b><i class="fas fa-user"></i> {{user.tenNguoiDung}}</b></a>
+                <b><i class="fas fa-user"></i> {{tenNguoiDung}}</b></a>
         </i>
 
 

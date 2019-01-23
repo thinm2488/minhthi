@@ -23,13 +23,15 @@ app.controller('userController',function($scope,$http){
                 tenNguoiDung:$scope.tenNguoiDung,
                 Email:$scope.Email,
                 password:$scope.password,
-                passWordConfim:$scope.passWordConfim
+                passWordConfim:$scope.passWordConfim,
+                hinh: 'user.png'
     
             }
             
             $http.post(window.location.origin+'/api/user',data).then(function(res){
                 console.log(res)
-                setCookie('email',res.data.user.Email);
+                setCookie('email',res.data.user.user.Email);
+                setCookie('email',res.data.user.user.tenNguoiDung);
                 window.alert('Đăng ký thành công');
                 window.location.href="/"
             }).catch(function(res){

@@ -31,7 +31,9 @@ const suaPhim= async function(data){
     phim.theLoai=data.theLoai;
     phim.phatHanh=data.phatHanh;
     phim.moTa=data.moTa;
+    if(data.hinh){
     phim.hinh=data.hinh;
+    }
     await phim.save();
     return{
         phim
@@ -40,7 +42,7 @@ const suaPhim= async function(data){
 }
 const xoaPhim = async function (id) {
     let phim = await Phim.findOne({ _id: id });
-    delete phim;
+    phim.remove();
     return {
         mess:'Xóa Phim thành công!'
     }

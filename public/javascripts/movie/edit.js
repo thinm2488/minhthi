@@ -8,7 +8,7 @@ app.controller('editController', function ($scope, $http) {
     //     setCookie("movieId",id);
     //     window.location.href=$scope.id +'/edit'
     // }
-
+    $scope.tenNguoiDung=getCookie("tenNguoiDung");
     var data = {
         id: id
     }
