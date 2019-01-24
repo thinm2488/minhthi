@@ -87,7 +87,7 @@
                                 <div class="form-group"style="margin-top: 20px">
                                     <img style="object-fit: cover;height:350px;width: 350px"src="../../../images/{{userinfomation.hinh}}" class="img-fluid" alt="Responsive image">
                                     <!-- <img style="object-fit: cover;height:350px;width: 350px"src="../../../images/img.jpg" class="img-fluid" alt="Responsive image"> -->
-                                    <button ng-show="false" ng-click="chooseImage()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left:30%;margin-top:30px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
+                                    <button ng-show="false" ng-click="chooseImage()" style="    width: 180px!important;background: rgb(128, 0, 0);color: white;padding: 10px;margin-left:30%;margin-top:30px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
 
                             </from>
                         </div>
@@ -96,11 +96,12 @@
                         <form>
                            
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1"><b style="font-size:20px">Tên người dùng: </b><p  ng-model="tenNguoiDung" style="font-size:25px">{{userinfomation.tenNguoiDung}}</p></label>
+                                <label for="exampleFormControlSelect1"><b style="font-size:20px">Tên người dùng: </b><p id="tenNguoiDung" ng-model="tenNguoiDung" style="font-size:25px">{{userinfomation.tenNguoiDung}}</p></label>
                             </div>
                             <div class="form-group date">
-                                    <span ></span><b style="font-size:20px;color:rgb(128, 0, 0);margin-top:50px" >Email: </b><span><p ng-model="email" style="font-size:25px">{{userinfomation.Email}}</p></span><br>
+                                    <span ></span><b style="font-size:20px;color:rgb(128, 0, 0);margin-top:50px" >Email: </b><span><p  id="Email"ng-model="email" style="font-size:25px">{{userinfomation.Email}}</p></span><br>
                             </div>
+                            
                             </form>
                             
                             <button style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 80%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn "><a  style="color:rgb(128, 0, 0);color: white;"href="/user/editprofile">Sửa</a></button>

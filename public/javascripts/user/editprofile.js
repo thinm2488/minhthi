@@ -32,13 +32,40 @@ app.controller('editprofileController', function ($scope, $http) {
             headers: { 'Content-Type': undefined }
         }).then(function (res) {
             window.alert('Lưu thông tin thành công');
+            setCookie("tenNguoiDung",res.data.user.tenNguoiDung)
             window.location.href = "/";
         }).catch(function (res) {
             console.log(res)
         })
        
     }
+    $scope.changePassword=function(){
+        if(!$scope.oldPassword){
+            window.alert('Chưa nhập password !')
+        }
+        else if($scope.confirmPassword!==$scope.newPassword){
+            window.alert('Xác nhận mật khẩu không đúng !')
+        }
+        else{
+            $scope.Email=getCookie("email");
+        var data={
+            oldPassword:$scope.oldPassword,
+            newPassword:$scope.newPassword,
+            Email:$scope.Email
+        }
+        $http.put("/api/user/changepass",data).then(function(res){
+           var mess=res.data.mess;
+           window.alert(mess);
+           if(data.check==true){
+            window.location.href="/"
+           }
+           
+          
+                 
+        });
     
+    }
+}
     
     $scope.chooseImage=function(){
     

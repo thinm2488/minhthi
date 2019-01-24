@@ -76,7 +76,7 @@
 <body ng-controller="userController">
     <% include ../header.ejs %>
 
-    <div class="container-fluid">
+    <div id="signup-form" class="container-fluid">
        
 
         <div style="border: rgb(128, 0, 0) solid; margin-left: 20%;margin-right: 20%;" class="row">
@@ -87,29 +87,29 @@
                 <form novalidate ng-submit="register()">
                     <div class="form-group">
                         <label for="ten"><b style="font-size:30px; font-family: 'Righteous', cursive;">Tên người dùng:</b></label>
-                        <input ng-model="tenNguoiDung"type="text" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
+                        <input id="nhapTen" ng-model="tenNguoiDung"type="text" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
                             class="form-control" placeholder="Nhập tên người dùng">
 
                     </div>
                     <div class="form-group">
                             <label for="email"><b style="font-size:30px; font-family: 'Righteous', cursive;">Nhập Email</b></label>
-                            <input ng-model="Email"type="email" style="font-size:20px;height: 50px;margin-top: 10px; font-family: 'Righteous', cursive;"
+                            <input id="nhapEmail" ng-model="Email"type="email" style="font-size:20px;height: 50px;margin-top: 10px; font-family: 'Righteous', cursive;"
                                 class="form-control" aria-describedby="emailHelp" placeholder="Nhập Emal">
     
                         </div>
                     <div class="form-group">
                         <label for="password"><b style="font-size:30px; font-family: 'Righteous', cursive;">Mật khẩu</b></label>
-                        <input ng-model="password" type="password" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
+                        <input id="nhapMatKhau" ng-model="password" type="password" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
                             class="form-control"  placeholder="Mật Khẩu" >
                     </div>
                     <div class="form-group">
                         <label for="passwordconfim"><b style="font-size:30px; font-family: 'Righteous', cursive;">Nhập lại mật khẩu</b></label>
-                        <input ng-model="passWordConfim"type="password" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
+                        <input id="kiemTraMatKhau"ng-model="passWordConfim"type="password" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
                             class="form-control"  placeholder="Nhập lại mật khẩu" >
                     </div>
                     
 
-                    <button  ng-click="taoUser()" style="float: right ; margin-top: 20px;background: rgb(128, 0, 0);color: white;" type="submit" class="btn btn-primary">Đăng Ký</button>
+                    <button id="buttonDangNhap" ng-click="taoUser()" style="float: right ; margin-top: 20px;background: rgb(128, 0, 0);color: white;" type="submit" class="btn btn-primary">Đăng Ký</button>
                 </form>
 
 

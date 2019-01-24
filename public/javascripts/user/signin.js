@@ -17,9 +17,9 @@ app.controller('loginController', function ($scope, $http) {
             }
             $http.post( '/api/user/signin', data).then(function (res) {
                 window.console.log(res)
-                
-                if (res.data === true) {
+                if (res.data.check === true) {
                     
+                    // setCookie('tenNguoiDung',res.data.user.);
                     window.location.href = "/"
                     
                 }

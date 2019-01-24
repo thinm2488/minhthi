@@ -75,7 +75,7 @@
 <body ng-controller="loginController">
     <% include ../header.ejs %>
 
-    <div class="container-fluid">
+    <div id="signup-form"class="container-fluid">
       
 
         <div style="border: rgb(128, 0, 0) solid; margin-left: 20%;margin-right: 20%"class="row">
@@ -87,17 +87,17 @@
 
                     <div class="form-group">
                         <label for="email"><b style="font-size:30px; font-family: 'Righteous', cursive;">Nhập Email</b></label>
-                        <input ng-model="Email" type="email" style="font-size:20px;height: 50px;margin-top: 10px; font-family: 'Righteous', cursive;"
+                        <input id="nhapEmail"ng-model="Email" type="email" style="font-size:20px;height: 50px;margin-top: 10px; font-family: 'Righteous', cursive;"
                             class="form-control" id="email" aria-describedby="emailHelp" placeholder="Nhập Emal">
 
                     </div>
                     <div class="form-group">
                         <label for="password"><b style="font-size:30px; font-family: 'Righteous', cursive;">Password</b></label>
-                        <input ng-model="passWord" type="password" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
+                        <input id="nhappassword" ng-model="passWord" type="password" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
                             class="form-control" id="password" placeholder="Mật Khẩu">
 
                     </div>
-                    <button ng-click="dangNhap()" style="float: right ; margin-top: 20px;background: rgb(128, 0, 0);color: white;" type="submit" class="btn btn-primary">Đăng Nhập </button>
+                    <button id="buttonDangNhap" ng-click="dangNhap()" style="float: right ; margin-top: 20px;background: rgb(128, 0, 0);color: white;" type="submit" class="btn btn-primary">Đăng Nhập </button>
                 </form>
 
 

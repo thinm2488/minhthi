@@ -31,7 +31,7 @@ app.controller('userController',function($scope,$http){
             $http.post(window.location.origin+'/api/user',data).then(function(res){
                 console.log(res)
                 setCookie('email',res.data.user.user.Email);
-                setCookie('email',res.data.user.user.tenNguoiDung);
+                setCookie('tenNguoiDung',res.data.user.user.tenNguoiDung);
                 window.alert('Đăng ký thành công');
                 window.location.href="/"
             }).catch(function(res){

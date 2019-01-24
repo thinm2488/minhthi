@@ -11,7 +11,7 @@ app.controller('detailController', function ($scope, $http) {
     var email= getCookie("email");
     var data= {
         id:$scope.id,
-        email
+        
     
     }
 

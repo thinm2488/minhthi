@@ -82,18 +82,18 @@
                         <div class="main-header">
                             <h1><b>Thông tin người dùng</b></h1>
                         </div>
-                        <div class="col-md-5" style="margin-left:20px;margin-bottom:20px">
+                        <div class="col-md-5" style="margin-left:20px;margin-bottom:20px;padding: 0">
                             <from>
                                 <div class="form-group"style="margin-top: 20px">
-                                    <img style="object-fit: cover;height:350px;width: 350px"src="../../../images/{{hinh}}" id="img" class="img-fluid" alt="Responsive image">
+                                    <img style="object-fit: cover;height:500px;width: 500px"src="../../../images/{{hinh}}" id="img" class="img-fluid" alt="Responsive image">
                                     <!-- <img ng-show="checkImage()"style="object-fit: cover;height:350px;width: 350px"src="../../../images/user.png" id="img" class="img-fluid" alt="Responsive image"> -->
                                     <input ng-show="false" type="file" onchange="readURL(this)"  id="fileUpdateImage"/>
-                                    <button ng-click="chooseImage()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left:30%;margin-top:30px;height: 55px;width: auto;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
+                                    <button ng-click="chooseImage()" style="    width: 180px!important;background: rgb(128, 0, 0);color: white;padding: 10px;margin-left:30%;margin-top:30px;height: 55px;width: auto;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
 
                             </from>
                         </div>
                     </div>
-                    <div class="col-md-5" style="margin-top: 20px">
+                    <div class="col-md-5" style="margin-top: 20px;    margin-left: 50px;">
                         <form>
                            
                             <div class="form-group">
@@ -102,17 +102,73 @@
 
                             </div>
                             <div class="form-group">
+                                <label for="email"><b style="font-size:30px; font-family: 'Righteous', cursive;">Password: ******</b>                                
+                                </label>
+
+
+            
+                                </div>
+                                <div class="form-group">
                                     
                                     <label for="ten"><b style="font-size:30px; font-family: 'Righteous', cursive;">Tên người dùng:</b></label>
                                 <input ng-model="tenNguoiDung"type="text" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
                                     class="form-control" placeholder="Nhập tên người dùng">
             
                                 </div>
+                                
                             </form>
+                            
+                            </button>
+                            
                             
                             <button ng-click="editProfile()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 80%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Lưu</button>
 
-                           
+                            <p data-placement="top" data-toggle="tooltip" title="Edit" data-original-title="Edit">
+                                <button  style="background: rgb(128, 0, 0);color: white;padding: 10px;position:absolute;bottom: 35px;height: 55px;font-size: 20px" class="btn btn" data-title="Edit" data-toggle="modal" data-target="#edit" data-backdrop="static" data-keyboard="false">
+                                    <span class="glyphicon glyphicon-pencil"> Đổi password</span>
+                                </button>
+                            </p>
+                            
+                            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                            
+                                        <div class="modal-header"style="background:wheat">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                           
+                                        </div>
+                                        <!--/.modal-header-->
+                            
+                                        <div class="modal-body" style="background:wheat">
+                                            <form method="post" id="updateForm" >
+                                               
+                                              
+                                                <h4><u><strong>Đổi Mật khẩu</strong></u></h4>
+                                                <div class="form-group" id="currentPass-group">
+                                                    <label for="current_pass">Mật khẩu hiện tại :</label>
+                                                    <input ng-model="oldPassword"class="form-control" type="password" name="current_pass" id="current_pass">
+                                                </div>
+                            
+                                                <div class="form-group">
+                                                    <label for="new_pass">Mật khẩu mới :</label>
+                                                    <input ng-model="newPassword" class="form-control" type="password" name="new_pass" id="new_pass">
+                                                </div>
+                            
+                                                <div class="form-group">
+                                                    <label for="confirm_pass">Xác nhận lại mật khẩu :</label>
+                                                    <input ng-model="confirmPassword" class="form-control" type="password" name="confirm_pass" id="confirm_pass">
+                                                </div>
+                            
+                                                <div class="modal-footer">
+                                                    <!-- <input type="submit" name="submit" class="btn btn-block btn-warning" value="Save changes" /> -->
+                                                    <button style="background:rgb(128, 0, 0);color: wheat" ng-click="changePassword()" name="submit" class="btn btn">Lưu thay đổi</button>
+                                                    <button style="background:rgb(128, 0, 0);color: wheat"type="button" class="btn btn-default" data-dismiss="modal">Trở về</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                            
+                                    </div>
+                                </div>
 
                     </div>
 

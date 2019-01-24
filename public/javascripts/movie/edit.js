@@ -8,9 +8,11 @@ app.controller('editController', function ($scope, $http) {
     //     setCookie("movieId",id);
     //     window.location.href=$scope.id +'/edit'
     // }
+    
     $scope.tenNguoiDung=getCookie("tenNguoiDung");
     var data = {
-        id: id
+        id: id,
+    
     }
 
 
@@ -49,11 +51,11 @@ app.controller('editController', function ($scope, $http) {
 
         $scope.suaPhim = function () {
 
-            var ngay = $("#datepicker").datepicker("getDate").getTime();
+            // var ngay = $("#datepicker").datepicker("getDate").getTime();
             formData.append("tenPhim", $scope.tenPhim);
             formData.append("moTa", $scope.moTa);
             formData.append("theLoai", $scope.theLoai);
-            formData.append("phatHanh", ngay);
+            formData.append("phatHanh", $scope.phatHanh);
             formData.append("id",id);
 
             $http({
