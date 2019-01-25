@@ -30,28 +30,6 @@ router.get('/profile', async function(req,res){
         
 //     }
 // })
-
-router.post('/', async function (req, res) {
-try {
-        // var checkEmail= req.data.body.Email
-        var token = jwt.sign({ data: req.body.Email }, 'secret', { expiresIn: '1y' });
-        //  if(!checkEmail){
-    
-        //  }
-        req.session.token = token;
-        //  if(req.body.Email)
-        var user = await userController.taoUser(req.body);
-    
-        res.send({
-            user,
-        })
-} catch (error) {
-    console.log(error)
-    res.status(500).send({errorMessage: error.message})
-}
-
-
-});
 router.get('/', async function (req, res) {
     try {
         req.session.destroy();
@@ -66,13 +44,32 @@ router.get('/', async function (req, res) {
     }
    
 })
+
+router.post('/', async function (req, res) {
+try {
+
+        var token = jwt.sign({ data: req.body.Email }, 'secret', { expiresIn: '1y' });
+        req.session.token = token;
+        var user = await userController.taoUser(req.body);
+    
+        res.send({
+            user,
+        })
+} catch (error) {
+    console.log(error)
+    res.status(500).send({errorMessage: error.message})
+}
+
+
+});
+
 router.post('/signin', async function (req, res) {
 try {
     var token = jwt.sign({ data: req.body.Email }, 'secret', { expiresIn: '1y' });
     req.session.token = token;
     var check = await userController.checkLogin(req.body);
 
-    res.send(check)
+    res.send({check})
 } catch (error) {
     console.log(error)
         res.status(500).send({errorMessage: error.message})
@@ -82,24 +79,36 @@ try {
 router.put('/', fileUpload() ,async function (req, res) {
 
     try {
+        var user
+        if (!req.files) {
+            user = await userController.editProfile(req.body); 
+        }
+        else{
         var file = req.files.hinh;
-
         req.body.hinh = file.name;
-        
-
-        // luu file
         var url = path.join(path.join(__dirname, '../../'), 'public/images/');
-
         file.mv(url + req.files.hinh.name, async function () {
-            var user = await userController.editProfile(req.body);
-            res.send(user)
+            user = await userController.editProfile(req.body);
+           
         })
+       
+    }
+    res.send(user)
 
     } catch (error) {
         console.log(error)
         res.status(500).send({errorMessage: error.message})
     }
 });
+router.put('/changepass', async function (req, res) {
+    try {
+        user = await userController.changePass(req.body);
+        res.send(user)
+    } catch (error) {
+        console.log(error)
+            res.status(500).send({errorMessage: error.message})
+    }
+    });
 
 
 module.exports = router;

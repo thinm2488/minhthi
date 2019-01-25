@@ -95,7 +95,7 @@ footer{
 
                 <div class="form-group">
                     <label style="font-size:20px;font-family: 'Righteous', cursive;" for="exampleFormControlSelect1"><b>Thể loại phim</b></label>
-                    <select style="height: 50px;font-size: 20px" class="form-control" id="exampleFormControlSelect1" ng-model="theLoai" ng-options="option.value as option.name for option in thename" >
+                    <select style="height: 50px;font-size: 20px" class="form-control" id="exampleFormControlSelect1" ng-options="option as option.name for option in thename track by option.value"  ng-model="theloai" >
                         <!-- <option>Hành Động</option>
                         <option>Tình Cảm</option>
                         <option>Hài</option>

@@ -20,6 +20,35 @@ app.controller('profileController', function ($scope, $http) {
     }).catch(function(res){
         console.log(res)
     })
+    $scope.changePassword=function(){
+        if(!$scope.oldPassword){
+            window.alert('Chưa nhập password !')
+        }
+        else if($scope.confirmPassword!==$scope.newPassword){
+            window.alert('Xác nhận mật khẩu không đúng !')
+        }
+        else{
+            $scope.Email=getCookie("email");
+        var data={
+            oldPassword:$scope.oldPassword,
+            newPassword:$scope.newPassword,
+            Email:$scope.Email
+        }
+        $http.put("/api/user/changepass",data).then(function(res){
+           if(res.data.check===true){
+            window.alert("Đổi mật khẩu thành công")
+            window.location.href="/"
+           }else{
+                window.alert("Mật Khẩu cũ không đúng!")
+            }
+           
+          
+                 
+        });
+    
+    }
+}
+
      
     // $scope.chooseImage=function(){
     
@@ -28,10 +57,21 @@ app.controller('profileController', function ($scope, $http) {
     $scope.logOut = function(){
         $http.get('/api/user').then(function (res) {
 
-               var mess= res.data.mess;
+            
+               delete_cookie('email');
                window.location.href="/"
             })
 
+    }
+    $scope.check= function(){
+        $scope.email=getCookie("email");
+        if(!$scope.email){
+           return false;
+        }
+        
+            return true;
+        
+        
     }
 });
 // function readURL(input) {

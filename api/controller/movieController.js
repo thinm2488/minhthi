@@ -4,6 +4,7 @@ const Phim = mongoose.model('Phim');
 
 const taoPhim = async function (data) {
     var phim = new Phim(data);
+    phim.ngayTao = Date.now()
     await phim.save();
     return {
         phim
@@ -27,10 +28,19 @@ const layChiTietPhim = async function (id) {
 }
 const suaPhim= async function(data){
     var phim = await Phim.findOne({ _id: data.id });
-    phim.tenPhim=data.tenPhim;
-    phim.theLoai=data.theLoai;
-    phim.phatHanh=data.phatHanh;
-    phim.moTa=data.moTa;
+   
+    if(data.tenPhim){
+        phim.tenPhim=data.tenPhim;
+    }
+    if(data.theLoai){
+        phim.theLoai=data.theLoai;
+    }
+    if(data.phatHanh){
+        phim.phatHanh=data.phatHanh
+    };
+    if(data.moTa){
+        phim.moTa=data.moTa;
+    }
     if(data.hinh){
     phim.hinh=data.hinh;
     }

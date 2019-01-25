@@ -54,7 +54,9 @@ const editProfile = async function (data) {
     let user = await User.findOne({ Email: data.Email });
     
         user.Email=data.Email;
+        if(data.tenNguoiDung){
         user.tenNguoiDung=data.tenNguoiDung;
+        }
         if(data.hinh){
         user.hinh=data.hinh;
         }
@@ -65,6 +67,28 @@ const editProfile = async function (data) {
     }
 
 }
+const changePass=async function(data){
+    let user = await User.findOne({ Email: data.Email });
+  
+    var check;
+    
+        if (user.password === data.oldPassword) {
+            user.password=data.newPassword
+            
+            check=true;
+           
+           
+        }
+        else {
+            check=false;
+            
+            
+        }
+        await user.save();
+        return {user,check}
+
+    }
+    
 
 
 
@@ -73,7 +97,7 @@ module.exports = {
     getUserByEmail: getUserByEmail,
     checkLogin: checkLogin,
     editProfile:editProfile,
-  
+    changePass:changePass
 }
 
 

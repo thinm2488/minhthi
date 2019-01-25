@@ -17,7 +17,7 @@ app.controller('detailController', function ($scope, $http) {
 
     $http.post("/api/movie/detail", data).then(function(res){
          $scope.thongtinphim= res.data.phim;
-         $scope.checkLogin=res.data.checkLogin;
+         $scope.checkLogin=$scope.check();
          $scope.user=res.data.user;
          $scope.checkuser= function(){
          if(res.data.phim.phim.nguoiTao===email)
@@ -42,9 +42,9 @@ app.controller('detailController', function ($scope, $http) {
    
     $scope.xoaPhim= function(){
         $http.post("/api/movie/xoadetail", data).then(function(res){
-            $scope.checkLogin=res.data.checkLogin;
-            window.alert('Xóa phim thành công!');
+
             window.location.href="/";
+            window.alert('Xóa phim thành công!');
             
        }).catch(function(res){
            console.log(res)
@@ -52,15 +52,49 @@ app.controller('detailController', function ($scope, $http) {
        
     }
     
+        $scope.suaPhim = function () {
 
-    $scope.logOut = function(){
-        $http.get('/api/user').then(function (res) {
+            var ngay = $("#datepicker").datepicker("getDate").getTime();
+            formData.append("tenPhim", $scope.tenPhim);
+            formData.append("moTa", $scope.moTa);
+            formData.append("theLoai", $scope.theLoai);
+            formData.append("phatHanh", ngay);
+            formData.append("id",id);
 
-               
-               window.location.href="/"
+            $http({
+                method: 'PUT',
+                url: '/api/movie',
+                data: formData,
+                headers: { 'Content-Type': undefined }
+            }).then(function (res) {
+                $scope.checkLogin=check();
+                window.alert('Lưu phim thành công');
+                window.location.href = "/";
+            }).catch(function (res) {
+                console.log(res)
             })
 
-    } 
+        }
+    
+        $scope.logOut = function(){
+            $http.get('/api/user').then(function (res) {
+    
+                  
+                   delete_cookie('email');
+                   window.location.href="/"
+                })
+    
+        }
+    $scope.check= function(){
+        $scope.email=getCookie("email");
+        if(!$scope.email){
+           return false;
+        }
+        
+            return true;
+        
+        
+    }
 
 });
 

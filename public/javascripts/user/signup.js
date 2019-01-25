@@ -1,3 +1,5 @@
+
+
 var app= angular.module('movie',[]);
 
 
@@ -46,6 +48,7 @@ app.controller('userController',function($scope,$http){
         
         
     }
+   
     
 
 });

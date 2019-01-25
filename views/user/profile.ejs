@@ -103,9 +103,58 @@
                             </div>
                             
                             </form>
-                            
-                            <button style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 80%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn "><a  style="color:rgb(128, 0, 0);color: white;"href="/user/editprofile">Sửa</a></button>
 
+                            
+                            <a  style="color:rgb(128, 0, 0);color: white;"href="/user/editprofile"><button style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 80%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Sửa</button></a>
+
+                            <p data-placement="top" data-toggle="tooltip" title="Edit" data-original-title="Edit">
+                                <button  style="background: rgb(128, 0, 0);color: white;padding: 10px;position:absolute;bottom: 35px;height: 55px;font-size: 20px" class="btn btn" data-title="Edit" data-toggle="modal" data-target="#edit" data-backdrop="static" data-keyboard="false">
+                                    <span class="glyphicon glyphicon-pencil"> Đổi password</span>
+                                </button>
+                            </p>
+                            
+                            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                            
+                                        <div class="modal-header"style="background:wheat">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                           
+                                        </div>
+                                        <!--/.modal-header-->
+                            
+                                        <div class="modal-body" style="background:wheat">
+                                            <form method="post" id="updateForm" >
+                                               
+                                              
+                                                <h4><u><strong>Đổi Mật khẩu</strong></u></h4>
+                                                <div class="form-group" id="currentPass-group">
+                                                    <label for="current_pass">Mật khẩu hiện tại :</label>
+                                                    <input ng-model="oldPassword"class="form-control" type="password" name="current_pass" id="current_pass">
+                                                </div>
+                            
+                                                <div class="form-group">
+                                                    <label for="new_pass">Mật khẩu mới :</label>
+                                                    <input ng-model="newPassword" class="form-control" type="password" name="new_pass" id="new_pass">
+                                                </div>
+                            
+                                                <div class="form-group">
+                                                    <label for="confirm_pass">Xác nhận lại mật khẩu :</label>
+                                                    <input ng-model="confirmPassword" class="form-control" type="password" name="confirm_pass" id="confirm_pass">
+                                                </div>
+                            
+                                                <div class="modal-footer">
+                                                    <!-- <input type="submit" name="submit" class="btn btn-block btn-warning" value="Save changes" /> -->
+                                                    <button style="background:rgb(128, 0, 0);color: wheat" ng-click="changePassword()" name="submit" class="btn btn">Lưu thay đổi</button>
+                                                    <button style="background:rgb(128, 0, 0);color: wheat"type="button" class="btn btn-default" data-dismiss="modal">Trở về</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                            
+                                    </div>
+                                </div>
+
+                    </div>
                            
 
                     </div>

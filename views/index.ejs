@@ -65,7 +65,7 @@ footer{
         <a href="/{{phim._id}}" style="color: rgb(128, 0, 0);text-decoration:null">
           <img src="images/{{phim.hinh}}" class="img-fluid" 
             style="height: 350px; width:450px;object-fit: cover;">
-          <div><label style="margin-top:20px ;color:rgb(128, 0, 0)" for="exampleInputName"><b style="font-size: 30px"> {{phim.tenPhim}}</b></label></div>
+          <div><label style="margin-top:20px ;color:rgb(128, 0, 0)" for="exampleInputName"><b id="tenphim"style="font-size: 30px"> {{phim.tenPhim}}</b></label></div>
           <div><label style="color:rgb(128, 0, 0)" for="exampleInputName"><b>Thể loại: {{phim.theLoai}}</b></label></div>
           <span ng-non-bindable></span><b style="color:rgb(128, 0, 0)" >Khởi Chiếu: <span>{{phim.phatHanh | date:'MM/dd/yyyy'}}</b></span><br>
         </a>

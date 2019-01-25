@@ -51,11 +51,11 @@ app.controller('editController', function ($scope, $http) {
 
         $scope.suaPhim = function () {
 
-            // var ngay = $("#datepicker").datepicker("getDate").getTime();
+            var ngay = $("#datepicker").datepicker("getDate").getTime();
             formData.append("tenPhim", $scope.tenPhim);
             formData.append("moTa", $scope.moTa);
             formData.append("theLoai", $scope.theLoai);
-            formData.append("phatHanh", $scope.phatHanh);
+            formData.append("phatHanh", ngay);
             formData.append("id",id);
 
             $http({
@@ -84,11 +84,22 @@ app.controller('editController', function ($scope, $http) {
     $scope.logOut = function(){
         $http.get('/api/user').then(function (res) {
 
-               var mess= res.data.mess;
+               delete_cookie('email');
                window.location.href="/"
             })
 
     }
+    $scope.check= function(){
+        $scope.email=getCookie("email");
+        if(!$scope.email){
+           return false;
+        }
+        
+            return true;
+        
+        
+    }
+    
 
 });
 

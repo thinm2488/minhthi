@@ -2,35 +2,55 @@ var app = angular.module('movie', []);
 var formData= new FormData();
 
 app.controller('createController', function ($scope, $http) {
-
+    $scope.check= function(){
+        $scope.email=getCookie("email");
+        if(!$scope.email){
+           return false;
+        }
+        
+            return true;
+    }
+    
     $scope.tenNguoiDung=getCookie("tenNguoiDung");
-    $scope.checkLogin=true;
+    $scope.checkLogin=$scope.check();
     $scope.taoPhim = function () {
         // thoi gian hien hanh jquery
         // $scope.tempImage = '../../images/img'
         var email=getCookie("email");    
         var ngay = $("#datepicker").datepicker("getDate").getTime();
+        if(!$scope.tenPhim){
+            window.alert("Chưa nhập tên phim !")
+        } else if(!$scope.moTa){
+                window.alert("Chưa nhập mô tả !")
+        }
+      
+        else{
+          
+           
+            formData.append("tenPhim",$scope.tenPhim);
+            formData.append("moTa",$scope.moTa);
+            formData.append("theLoai",$scope.theloai.name);
+            formData.append("phatHanh",ngay);
+            formData.append("nguoiTao",email)
+            
+            
+            
+            $http({
+                method  : 'POST',
+                url     : '/api/movie',
+                data    : formData,
+                headers : { 'Content-Type': undefined } 
+               }).then(function(res){
+                    
+                    window.alert('Tạo phim thành công');
+                    window.location.href="/";
+               }).catch(function(res){
+                console.log(res)
+            })
+            
+        }
         
-        formData.append("tenPhim",$scope.tenPhim);
-        formData.append("moTa",$scope.moTa);
-        formData.append("theLoai",$scope.theLoai);
-        formData.append("phatHanh",ngay);
-        formData.append("nguoiTao",email)
-        
-        
-        
-        $http({
-            method  : 'POST',
-            url     : '/api/movie',
-            data    : formData,
-            headers : { 'Content-Type': undefined } 
-           }).then(function(res){
-                $scope.checkLogin=res.data.checkLogin;
-                window.alert('Tạo phim thành công');
-                window.location.href="/";
-           }).catch(function(res){
-            console.log(res)
-        })
+       
 
       
         // var data = {
@@ -57,7 +77,7 @@ app.controller('createController', function ($scope, $http) {
         {name:'Kinh Dị',value:'Kinh Dị'},
         {name:'Hoạt Hình',value:'Hoạt Hình'}
     ]
-$scope.theloai= $scope.thename[0].value;
+$scope.theloai= $scope.thename[0];
 
 $scope.chooseImage=function(){
     
@@ -67,11 +87,12 @@ $scope.chooseImage=function(){
 $scope.logOut = function(){
     $http.get('/api/user').then(function (res) {
 
-           var mess= res.data.mess;
+           delete_cookie('email');
            window.location.href="/"
         })
 
 }
+
 });
 
 function readURL(input) {
