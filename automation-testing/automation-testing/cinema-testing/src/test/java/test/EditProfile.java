@@ -1,7 +1,7 @@
 package test;
 
 import org.testng.annotations.Test;
-import page.EditPage;
+import page.EditProfilePage;
 import page.HomePage;
 import page.ProfilePage;
 import page.SignUpPage;
@@ -35,10 +35,13 @@ public class EditProfile extends TestBase{
             ProfilePage profilePage=new ProfilePage(driver);
             testResult*= profilePage.verifyProfilePage(name) ? 1:0;
             profilePage.clickGoToEditPage();
-            EditPage editPage=new EditPage(driver);
+            EditProfilePage editPage=new EditProfilePage(driver);
             testResult*= editPage.verifyEditPage(email) ? 1 : 0;
-            editPage.Inputname(name);
-            testResult*= homePage.VerifySignin(name)? 1: 0;
+            editPage.inputinfomation(password);
+            editPage.clickGoToHomePage();
+            testResult*= homePage.VerifySignin(name+password)? 1: 0;
+            homePage.goToPageProfile();
+            testResult*= profilePage.verifyProfilePage(name+password) ? 1:0;
 
 
         } catch (Exception ex) {

@@ -36,6 +36,7 @@ app.controller('editprofileController', function ($scope, $http) {
             window.location.href = "/";
         }).catch(function (res) {
             console.log(res)
+            window.alert(res.data.errorMessage);
         })
        
     }

@@ -8,16 +8,6 @@ const taoUser = async function (data) {
         throw new Error('Email đã được sử dụng ! ')
     }
   
-    // if(Email)
-    // {
-    //     window.alert('Email đã được sử dụng!')
-    // }else{
-    //     var user=new User(data);
-    //     await user.save();
-    //     return{
-    //         user
-    //     }
-    // }
     user = new User(data);
     await user.save();
     return {
@@ -38,17 +28,16 @@ const checkLogin = async function (data) {
     let user = await User.findOne({ Email: data.Email });
     if (user) {
         if (user.password === data.password) {
-            return true
+            return user
 
-        }
-        else {
-            return false
-        }
-
+        }else{
+            
+            throw new Error('Nhập sai Email hoặc password!')
+        }      
+    }else{
+        throw new Error('Email không tồn tại!')
     }
-    else {
-        return false
-    }
+ 
 }
 const editProfile = async function (data) {
     let user = await User.findOne({ Email: data.Email });
@@ -70,22 +59,16 @@ const editProfile = async function (data) {
 const changePass=async function(data){
     let user = await User.findOne({ Email: data.Email });
   
-    var check;
+  
     
         if (user.password === data.oldPassword) {
             user.password=data.newPassword
-            
-            check=true;
-           
-           
         }
         else {
-            check=false;
-            
-            
+            throw new Error('Nhập sai mật khẩu cũ!')
         }
         await user.save();
-        return {user,check}
+        return {user}
 
     }
     

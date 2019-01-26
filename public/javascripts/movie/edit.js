@@ -8,8 +8,18 @@ app.controller('editController', function ($scope, $http) {
     //     setCookie("movieId",id);
     //     window.location.href=$scope.id +'/edit'
     // }
+    $scope.check= function(){
+        $scope.email=getCookie("email");
+        if(!$scope.email){
+           return false;
+        }
+        
+            return true;
+    }
     
     $scope.tenNguoiDung=getCookie("tenNguoiDung");
+    $scope.checkLogin=$scope.check();
+
     var data = {
         id: id,
     
@@ -49,31 +59,32 @@ app.controller('editController', function ($scope, $http) {
         //     })
 
 
-        $scope.suaPhim = function () {
-
-            var ngay = $("#datepicker").datepicker("getDate").getTime();
-            formData.append("tenPhim", $scope.tenPhim);
-            formData.append("moTa", $scope.moTa);
-            formData.append("theLoai", $scope.theLoai);
-            formData.append("phatHanh", ngay);
-            formData.append("id",id);
-
-            $http({
-                method: 'PUT',
-                url: '/api/movie',
-                data: formData,
-                headers: { 'Content-Type': undefined }
-            }).then(function (res) {
-                window.alert('Lưu phim thành công');
-                window.location.href = "/";
-            }).catch(function (res) {
-                console.log(res)
-            })
-
-        }
+       
 
      
     });
+    $scope.suaPhim = function () {
+
+        var ngay = $("#datepicker").datepicker("getDate").getTime();
+        formData.append("tenPhim", $scope.tenPhim);
+        formData.append("moTa", $scope.moTa);
+        formData.append("theLoai", $scope.theLoai);
+        formData.append("phatHanh", ngay);
+        formData.append("id",id);
+
+        $http({
+            method: 'PUT',
+            url: '/api/movie',
+            data: formData,
+            headers: { 'Content-Type': undefined }
+        }).then(function (res) {
+            window.alert('Lưu phim thành công');
+            window.location.href = "/";
+        }).catch(function (res) {
+            console.log(res)
+        })
+
+    }
 
     $scope.chooseImage = function () {
 
@@ -89,16 +100,7 @@ app.controller('editController', function ($scope, $http) {
             })
 
     }
-    $scope.check= function(){
-        $scope.email=getCookie("email");
-        if(!$scope.email){
-           return false;
-        }
-        
-            return true;
-        
-        
-    }
+  
     
 
 });

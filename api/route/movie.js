@@ -21,7 +21,7 @@ router.post('/', fileUpload(), async function (req, res) {
             var url = path.join(path.join(__dirname, '../../'), 'public/images/');
 
             file.mv(url + req.files.hinh.name, async function () {
-                var phim = await movieController.taoPhim(req.body);
+                phim = await movieController.taoPhim(req.body);
                
 
             })
@@ -44,7 +44,7 @@ router.get('/', async function (req, res) {
     try {
         var listphim = await movieController.layPhim();
 
-        var checkLogin = false;
+
        
         res.send({
             listPhimObj: listphim,
@@ -60,9 +60,7 @@ router.get('/', async function (req, res) {
 router.post('/detail', async function (req, res) {
     try {
         var phim = await movieController.layChiTietPhim(req.body.id);
-        var checkLogin = false;
-        var token = req.session.token;
-      
+
         res.send({
             phim,
     

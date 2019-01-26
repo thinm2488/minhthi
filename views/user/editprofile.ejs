@@ -85,7 +85,7 @@
                         <div class="col-md-5" style="margin-left:20px;margin-bottom:20px;padding: 0">
                             <from>
                                 <div class="form-group"style="margin-top: 20px">
-                                    <img style="object-fit: cover;height:500px;width: 500px"src="../../../images/{{hinh}}" id="img" class="img-fluid" alt="Responsive image">
+                                    <img style="object-fit: cover;height:450px;width: 450px"src="../../../images/{{hinh}}" id="img" class="img-fluid" alt="Responsive image">
                                     <!-- <img ng-show="checkImage()"style="object-fit: cover;height:350px;width: 350px"src="../../../images/user.png" id="img" class="img-fluid" alt="Responsive image"> -->
                                     <input ng-show="false" type="file" onchange="readURL(this)"  id="fileUpdateImage"/>
                                     <button ng-click="chooseImage()" style="    width: 180px!important;background: rgb(128, 0, 0);color: white;padding: 10px;margin-left:30%;margin-top:30px;height: 55px;width: auto;font-size: 20px" type="button" class="btnanh btn ">Tải ảnh lên</button>
@@ -98,21 +98,21 @@
                            
                             <div class="form-group">
                                
-                                    <label for="email"><b style="font-size:30px; font-family: 'Righteous', cursive;">Email: <b>{{Email}}</b></b></label>
+                                    <label for="email"><b style="font-size:30px; font-family: 'Righteous', cursive;">Email: <b id="email">{{Email}}</b></b></label>
 
                             </div>
                             
                                 <div class="form-group">
                                     
                                     <label for="ten"><b style="font-size:30px; font-family: 'Righteous', cursive;">Tên người dùng:</b></label>
-                                <input ng-model="tenNguoiDung"type="text" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
+                                <input id="ten"ng-model="tenNguoiDung"type="text" style="font-size:20px; margin-top: 10px;height: 50px; font-family: 'Righteous', cursive;"
                                     class="form-control" placeholder="Nhập tên người dùng">
             
                                 </div>
                                 
                             </form>
                             
-                            <button ng-click="editProfile()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 80%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Lưu</button>
+                            <button id="buttonluu"ng-click="editProfile()" style="background: rgb(128, 0, 0);color: white;padding: 10px;margin-left: 80%;position:absolute;bottom: 35px;height: 55px;font-size: 20px" type="button" class="btnanh btn ">Lưu</button>
 
                             
                             

@@ -14,7 +14,7 @@ app.controller('getController', function ($scope, $http) {
     $scope.logOut = function(){
         $http.get('/api/user').then(function (res) {
 
-               var mess= res.data.mess;
+              
                delete_cookie('email');
                window.location.href="/"
             })

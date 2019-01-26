@@ -6,18 +6,8 @@ app.controller('profileController', function ($scope, $http) {
     $scope.checkLogin=true;
     $http.get(window.location.origin+"/api/user/profile").then(function(res){
          $scope.userinfomation= res.data.userInfomation;
-        
-        //  $scope.checkImage=function(){
-        //     if(!res.data.hinh){
-        //         return true;
-        //     }else{
-        //         return false;
-        //     }
-             
-        //  }
-        
-       
-    }).catch(function(res){
+
+        }).catch(function(res){
         console.log(res)
     })
     $scope.changePassword=function(){
@@ -35,16 +25,12 @@ app.controller('profileController', function ($scope, $http) {
             Email:$scope.Email
         }
         $http.put("/api/user/changepass",data).then(function(res){
-           if(res.data.check===true){
             window.alert("Đổi mật khẩu thành công")
             window.location.href="/"
-           }else{
-                window.alert("Mật Khẩu cũ không đúng!")
-            }
-           
-          
-                 
-        });
+        }).catch(function(res){
+            console.log(res)
+            window.alert(res.data.errorMessage);
+        })
     
     }
 }

@@ -37,8 +37,8 @@ app.controller('detailController', function ($scope, $http) {
        
     }).catch(function(res){
         console.log(res)
+        window.alert(res.data.errorMessage);
     })
-  
    
     $scope.xoaPhim= function(){
         $http.post("/api/movie/xoadetail", data).then(function(res){
@@ -47,8 +47,9 @@ app.controller('detailController', function ($scope, $http) {
             window.alert('Xóa phim thành công!');
             
        }).catch(function(res){
-           console.log(res)
-       })
+        console.log(res)
+        window.alert(res.data.errorMessage);
+    })
        
     }
     
@@ -70,8 +71,9 @@ app.controller('detailController', function ($scope, $http) {
                 $scope.checkLogin=check();
                 window.alert('Lưu phim thành công');
                 window.location.href = "/";
-            }).catch(function (res) {
+            }).catch(function(res){
                 console.log(res)
+                window.alert(res.data.errorMessage);
             })
 
         }

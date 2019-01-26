@@ -17,17 +17,15 @@ app.controller('loginController', function ($scope, $http) {
             }
             $http.post( '/api/user/signin', data).then(function (res) {
                 window.console.log(res)
-                if (res.data.check === true) {
+              
                     
-                    // setCookie('tenNguoiDung',res.data.user.);
+                    setCookie('email', $scope.Email);
+                    setCookie('tenNguoiDung',res.data.tenNguoiDung);
                     window.location.href = "/"
-                    
-                }
-                else {
-                    window.alert('Sai email hoặc mật khẩu!')
-                }
+            
             }).catch(function(res){
                 console.log(res)
+                window.alert(res.data.errorMessage);
             })
         }
     }
