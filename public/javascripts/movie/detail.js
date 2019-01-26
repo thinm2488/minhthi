@@ -9,13 +9,13 @@ app.controller('detailController', function ($scope, $http) {
     // }
     $scope.tenNguoiDung=getCookie("tenNguoiDung");
     var email= getCookie("email");
-    var data= {
-        id:$scope.id,
+    
+        id=$scope.id,
         
     
-    }
+    
 
-    $http.post("/api/movie/detail", data).then(function(res){
+    $http.get("/api/movie/"+ id).then(function(res){
          $scope.thongtinphim= res.data.phim;
          $scope.checkLogin=$scope.check();
          $scope.user=res.data.user;
@@ -41,7 +41,7 @@ app.controller('detailController', function ($scope, $http) {
     })
    
     $scope.xoaPhim= function(){
-        $http.post("/api/movie/xoadetail", data).then(function(res){
+        $http.delete("/api/movie/"+id).then(function(res){
 
             window.location.href="/";
             window.alert('Xóa phim thành công!');
@@ -79,7 +79,7 @@ app.controller('detailController', function ($scope, $http) {
         }
     
         $scope.logOut = function(){
-            $http.get('/api/user').then(function (res) {
+            $http.get('/api/user/logout').then(function (res) {
     
                   
                    delete_cookie('email');

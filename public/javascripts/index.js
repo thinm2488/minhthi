@@ -12,7 +12,7 @@ app.controller('getController', function ($scope, $http) {
     })
 
     $scope.logOut = function(){
-        $http.get('/api/user').then(function (res) {
+        $http.get('/api/user/logout').then(function (res) {
 
               
                delete_cookie('email');

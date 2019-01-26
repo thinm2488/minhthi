@@ -18,21 +18,17 @@ app.controller('editController', function ($scope, $http) {
     }
     
     $scope.tenNguoiDung=getCookie("tenNguoiDung");
-    $scope.checkLogin=$scope.check();
+   
 
-    var data = {
-        id: id,
+        id= id,
     
-    }
-
-
-    $http.post("/api/movie/detail", data).then(function (res) {
+    $http.get("/api/movie/"+id).then(function (res) {
         $scope.tenPhim = res.data.phim.phim.tenPhim;
         $scope.theLoai = res.data.phim.phim.theLoai;
         $scope.phatHanh = res.data.phim.phim.phatHanh;
         $scope.moTa = res.data.phim.phim.moTa;
         $scope.hinh = res.data.phim.phim.hinh;
-        $scope.checkLogin = res.data.checkLogin;
+        $scope.checkLogin=$scope.check();
 
         $scope.movieType = ['Hanh dong', 'Tinh cam']
         $scope.thename = [
@@ -63,7 +59,9 @@ app.controller('editController', function ($scope, $http) {
 
      
     });
+    
     $scope.suaPhim = function () {
+       
 
         var ngay = $("#datepicker").datepicker("getDate").getTime();
         formData.append("tenPhim", $scope.tenPhim);
@@ -93,7 +91,7 @@ app.controller('editController', function ($scope, $http) {
 
 
     $scope.logOut = function(){
-        $http.get('/api/user').then(function (res) {
+        $http.get('/api/user/logout').then(function (res) {
 
                delete_cookie('email');
                window.location.href="/"
@@ -104,6 +102,7 @@ app.controller('editController', function ($scope, $http) {
     
 
 });
+
 
 function readURL(input) {
     if (input.files && input.files[0]) {

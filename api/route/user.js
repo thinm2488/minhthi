@@ -2,6 +2,7 @@ var express = require('express');
 var session = require('express-session')
 var router = express.Router();
 var userController = require('../controller/userController');
+var authController = require('../controller/authController');
 var jwt = require('jsonwebtoken');
 var fileUpload = require('express-fileupload');
 const path = require('path');
@@ -13,6 +14,7 @@ router.get('/profile', async function (req, res) {
         var userInfomation = await userController.getUserByEmail(emailObj.data)
 
         res.send({
+            status: 200,
             userInfomation,
 
         })
@@ -23,10 +25,12 @@ router.get('/profile', async function (req, res) {
     }
 })
 
-router.get('/', async function (req, res) {
+
+router.get('/logout', async function (req, res) {
     try {
         req.session.destroy();
         res.send({
+            status:200,
             mess: 'LogOut Thành công'
         })
 
@@ -38,13 +42,15 @@ router.get('/', async function (req, res) {
 
 })
 
-router.post('/', async function (req, res) {
+router.post('/signup', async function (req, res) {
     try {
-
+        //? lai con de x-acess-token vao khong
         var token = jwt.sign({ data: req.body.Email }, 'secret', { expiresIn: '1y' });
         req.session.token = token;
+        
         var user = await userController.taoUser(req.body);
-
+        user = JSON.parse(JSON.stringify(user))
+        delete user.password;
         res.send({
             user,
         })

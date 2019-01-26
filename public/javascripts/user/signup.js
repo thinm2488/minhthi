@@ -30,7 +30,7 @@ app.controller('userController',function($scope,$http){
     
             }
             
-            $http.post(window.location.origin+'/api/user',data).then(function(res){
+            $http.post(window.location.origin+'/api/user/signup',data).then(function(res){
                 console.log(res)
                 setCookie('email',res.data.user.user.Email);
                 setCookie('tenNguoiDung',res.data.user.user.tenNguoiDung);

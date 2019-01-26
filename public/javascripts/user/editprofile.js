@@ -47,7 +47,7 @@ app.controller('editprofileController', function ($scope, $http) {
         document.getElementById("fileUpdateImage").click()
     }
     $scope.logOut = function(){
-        $http.get('/api/user').then(function (res) {
+        $http.get('/api/user/logout').then(function (res) {
 
                
                delete_cookie('email');

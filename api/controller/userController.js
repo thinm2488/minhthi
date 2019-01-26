@@ -51,9 +51,7 @@ const editProfile = async function (data) {
         }
     
     await user.save();
-    return {
-        user
-    }
+    return {user}
 
 }
 const changePass=async function(data){

@@ -85,7 +85,7 @@ $scope.chooseImage=function(){
 }
 
 $scope.logOut = function(){
-    $http.get('/api/user').then(function (res) {
+    $http.get('/api/user/logout').then(function (res) {
 
            delete_cookie('email');
            window.location.href="/"
