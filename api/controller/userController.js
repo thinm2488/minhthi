@@ -4,6 +4,7 @@ const User = mongoose.model('User');
 const nodemailer = require('nodemailer')
 var jwt = require('jsonwebtoken');
 const smtpTransport=require('nodemailer-smtp-transport')
+var generator=require('generate-password')
 
 const taoUser = async function (data) {
     let user = await User.findOne({ Email: data.Email });
@@ -97,7 +98,10 @@ return transPorter.sendMail(mailOption);
 const changePassword = async function (data) {
     let user = await User.findOne({ Email: data });
 
-    var newpass=Math.random()
+    var newpass= generator.generate({
+        length:8,
+        Number:true
+    })
     user.password=newpass;
 
     
