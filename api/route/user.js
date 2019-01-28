@@ -2,10 +2,11 @@ var express = require('express');
 var session = require('express-session')
 var router = express.Router();
 var userController = require('../controller/userController');
-var authController = require('../controller/authController');
+// var authController = require('../controller/authController');
 var jwt = require('jsonwebtoken');
 var fileUpload = require('express-fileupload');
 const path = require('path');
+// var passport = require('../controller/passport').passport
 
 router.get('/profile', async function (req, res) {
     try {
@@ -132,6 +133,17 @@ router.put('/resetpassword/:token',async function(req,res){
     user= await userController.changePassword(email.Email)
     res.send(user);
 })
+// router.get('/google', passport.authController('google', { scope:
+//     [ 'https://www.googleapis.com/user/userinfo.email',
+//       'https://www.googleapis.com/user/userinfo.profile' ] }))
+//   router.get('/google/callback', function (req, res, next) {
+//     passport.authenticate('google', function (err, user, info) {
+//       if (err) {
+//         return res.send({ errorMessage: err })
+//       }
+//       res.render('cinema/home', { title: 'Home', token: info.token })
+//     })(req, res, next)
+//   })
 
 
 module.exports = router;
