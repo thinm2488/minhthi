@@ -43,7 +43,9 @@ app.controller('detailController', function ($scope, $http) {
     $scope.xoaPhim= function(){
         $http.delete("/api/movie/"+id).then(function(res){
 
+           
             window.location.href="/";
+            
             window.alert('Xóa phim thành công!');
             
        }).catch(function(res){

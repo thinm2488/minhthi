@@ -12,7 +12,6 @@ router.get('/profile', async function (req, res) {
         var token = req.session.token;
         var emailObj = jwt.decode(token);
         var userInfomation = await userController.getUserByEmail(emailObj.data)
-
         res.send({
             status: 200,
             userInfomation,
@@ -47,12 +46,12 @@ router.post('/signup', async function (req, res) {
         //? lai con de x-acess-token vao khong
         var token = jwt.sign({ data: req.body.Email }, 'secret', { expiresIn: '1y' });
         req.session.token = token;
-        
         var user = await userController.taoUser(req.body);
         user = JSON.parse(JSON.stringify(user))
         delete user.password;
         res.send({
-            user,
+            token,
+            user
         })
     } catch (error) {
         console.log(error)
@@ -68,7 +67,10 @@ router.post('/signin', async function (req, res) {
         req.session.token = token;
         var user = await userController.checkLogin(req.body);
 
-        res.send(user)
+        res.send({
+            token:token,
+            user
+        })
     } catch (error) {
         console.log(error)
         res.status(500).send({ errorMessage: error.message })
@@ -78,6 +80,8 @@ router.post('/signin', async function (req, res) {
 router.put('/', fileUpload(), async function (req, res) {
 
     try {
+        var token = jwt.sign({ data: req.body.Email }, 'secret', { expiresIn: '1y' });
+        req.session.token = token;
         var user
         if (!req.files) {
             user = await userController.editProfile(req.body);
@@ -99,8 +103,10 @@ router.put('/', fileUpload(), async function (req, res) {
         res.status(500).send({ errorMessage: error.message })
     }
 });
-router.put('/changepass', async function (req, res) {
+router.put('/password', async function (req, res) {
     try {
+        var token = jwt.sign({ data: req.body.Email }, 'secret', { expiresIn: '1y' });
+        req.session.token = token;
         user = await userController.changePass(req.body);
         res.send(user)
     } catch (error) {
@@ -108,6 +114,24 @@ router.put('/changepass', async function (req, res) {
         res.status(500).send({ errorMessage: error.message })
     }
 });
+router.put('/passwordReset',async function(req,res){
+    try {
+        var token = jwt.sign({ data: req.body.Email }, 'secret', { expiresIn: '1y' });
+        req.session.token = token;
+        user= await userController.resetPassword(req.body,req.headers.host)
+
+        res.send(user);
+        
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({ errorMessage: error.message })
+    }
+})
+router.put('/resetpassword/:token',async function(req,res){
+    var email=jwt.decode(req.params.token);
+    user= await userController.changePassword(email.Email)
+    res.send(user);
+})
 
 
 module.exports = router;

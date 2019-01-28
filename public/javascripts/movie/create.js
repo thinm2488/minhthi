@@ -37,7 +37,7 @@ app.controller('createController', function ($scope, $http) {
             
             $http({
                 method  : 'POST',
-                url     : '/api/movie',
+                url     :'/api/movie',
                 data    : formData,
                 headers : { 'Content-Type': undefined } 
                }).then(function(res){

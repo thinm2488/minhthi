@@ -27,7 +27,7 @@ app.controller('editprofileController', function ($scope, $http) {
     
         $http({
             method: 'PUT',
-            url: '/api/user',
+            url: window.location.origin+'/api/user',
             data: formData,
             headers: { 'Content-Type': undefined }
         }).then(function (res) {

@@ -24,7 +24,7 @@ app.controller('profileController', function ($scope, $http) {
             newPassword:$scope.newPassword,
             Email:$scope.Email
         }
-        $http.put("/api/user/changepass",data).then(function(res){
+        $http.put("/api/user/password",data).then(function(res){
             window.alert("Đổi mật khẩu thành công")
             window.location.href="/"
         }).catch(function(res){

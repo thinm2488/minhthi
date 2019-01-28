@@ -20,7 +20,7 @@ app.controller('loginController', function ($scope, $http) {
               
                     
                     setCookie('email', $scope.Email);
-                    setCookie('tenNguoiDung',res.data.tenNguoiDung);
+                    setCookie('tenNguoiDung',res.data.user.tenNguoiDung);
                     window.location.href = "/"
             
             }).catch(function(res){

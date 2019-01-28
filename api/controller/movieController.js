@@ -4,6 +4,7 @@ const Phim = mongoose.model('Phim');
 
 const taoPhim = async function (data) {
     var phim = new Phim(data);
+    // phim.nguoiTao=
     phim.ngayTao = Date.now()
     await phim.save();
     return {
